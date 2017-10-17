@@ -513,12 +513,12 @@ $config['proxy_ips'] = '';
   | a PHP script and you can easily do that on your own.
   |
  */
-require_once( BASEPATH . '/database/DB.php');
-$db = &DB();
-$query = $db->where(array("name" => 'base_url'))->get('options');
-$result = $query->result_array();
-$base_url = count($result) ? $result[0]['content'] : "";
-$config['base_url'] = $base_url;
+//require_once( BASEPATH . '/database/DB.php');
+//$db = &DB();
+//$query = $db->where(array("name" => 'base_url'))->get('options');
+//$result = $query->result_array();
+//$base_url = count($result) ? $result[0]['content'] : "";
+$config['base_url'] = "http://localhost/chungcu/";
 /*
   |--------------------------------------------------------------------------
   | Modules locations
