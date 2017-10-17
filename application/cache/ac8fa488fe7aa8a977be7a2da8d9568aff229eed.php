@@ -12,12 +12,12 @@
                 </div>
                 <?php endif; ?>
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <span class="input-group-addon"><i class="icon icon-user"></i></span>
                     <input id="user" type="text" class="form-control" name="identity" value="" placeholder="User">                                        
                 </div>
 
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <span class="input-group-addon"><i class="icon icon-lock"></i></span>
                     <input id="password" type="password" class="form-control" name="password" placeholder="Password">
                 </div>                                                                  
                 <div class="input-group">

@@ -56,9 +56,9 @@ echo $widget->sliderhome();
 <!-- === SLide 3 - Portfolio -->
 <div class="slide story" id="slide-3" data-slide="3">
     <div class="row slide-hinhanh"> 
-        @for($i=22;$i<37;$i++)
-        <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox hover1" href="{{base_url()}}public/images/{{$i}}.jpg"><img class="thumb" src="{{base_url()}}public/images/{{$i}}.jpg" alt=""></a></div>
-        @endfor
+        @foreach($muc_hinhanh as $hinhanh)
+        <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox hover1" href="{{base_url() . $hinhanh['img']['src']}}"><img class="thumb" src="{{base_url() . $hinhanh['img']['src']}}" alt="{{$hinhanh['img']['real_hinhanh']}}"></a></div>
+        @endforeach
 
     </div>
 </div><!-- /slide3 -->
@@ -188,36 +188,13 @@ echo $widget->sliderhome();
 <div class="slide story show_more" id="slide-5" data-slide ='5'>
     <div class="container">
         <div class="row title-row">
-            <div class="col-12 font-semibold">Mặt bằng</div>
+            <div class="col-12 font-semibold">{{$tieu_de_muc1 or ""}}</div>
         </div><!-- /row -->
         <div class="row line-row">
             <div class="hr">&nbsp;</div>
         </div><!-- /row -->
-        <div class="row subtitle-row" style="font-size:18px;text-align: left;">
-            <div class="col-sm-12"> 
-                <img src="{{base_url()}}public/images/14.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="{{base_url()}}public/images/15.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="{{base_url()}}public/images/16.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="{{base_url()}}public/images/17.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="{{base_url()}}public/images/18.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="{{base_url()}}public/images/19.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="{{base_url()}}public/images/20.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="{{base_url()}}public/images/21.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
+        <div class="row subtitle-row fr-view" style="font-size:18px;text-align: left;">
+            <?= $noi_dung_muc1 ?>
         </div><!-- /row -->
     </div>
 </div>
@@ -226,57 +203,13 @@ echo $widget->sliderhome();
 <div class="slide story show_more" id="slide-6" data-slide="6">
     <div class="container">
         <div class="row title-row">
-            <div class="col-12 font-semibold">Tiện ích</div>
+            <div class="col-12 font-semibold">{{$tieu_de_muc2 or ""}}</div>
         </div><!-- /row -->
         <div class="row line-row">
             <div class="hr">&nbsp;</div>
         </div><!-- /row -->
-        <div class="row subtitle-row" style="font-size:18px;text-align: left;">
-            <!--            <div class="col-sm-6">
-                            <p><i>1.</i>Main entrance/ Lối vào</p>
-                            <p><i>2.</i>Drop-off station in Pedestrian area/ Điểm đưa đón khách tản bộ</p>
-                            <p><i>3.</i>Mini-clubhouse / Nhà chờ, khu Café</p>
-                            <p><i>4.</i>Outdoor Café/ Café ánh sao</p>
-                            <p><i>5.</i>Pool Deck/ Hồ bơi sinh thái</p>
-                            <p><i>6.</i>Children Pool With Water Play Equipment/ Đảo thiên đường trẻ thơ</p>
-                            <p><i>7.</i>Pavilion/ Lều nghĩ chân</p>
-                            <p><i>8.</i>Shallow Stream/ Suối lười</p>
-                            <p><i>9.</i>Aroma Garden/ Vườn thảo mộc</p>
-                            <p><i>10.</i>Bbq Area With Trellis/ Phố nướng BBQ</p>
-                            <p><i>11.</i>Reflexology Path/ Con đường thư giản</p>
-                            <p><i>12.</i>Grand Lawn/ Thảo nguyên xanh</p>
-                            <p><i>13.</i>Outdoor Amphitheatre/ Sân khấu ngoài trời</p>
-                            <p><i>14.</i>Stage With Cover Structure/ Sân khấu mái vòm</p>
-                            <p><i>15.</i>Activity Plaza/ Quảng trường ánh sáng</p>
-            
-            
-                        </div>
-                        <div class="col-sm-6">
-                            <p><i>16.</i>Community House/ Nhà cộng đồng</p>
-                            <p><i>17.</i>Open Lawn/ Đồng cỏ xanh</p>
-                            <p><i>18.</i>Light Well/ Giếng trời</p>
-                            <p><i>19.</i>Relaxing Garden/ Vườn thảo mộc</p>
-                            <p><i>20.</i>Vegetable Garden/ Vườn rau</p>
-                            <p><i>21.</i>Sand Playground/ Sa mạc vui vẻ</p>
-                            <p><i>22.</i>Thematic Children Playground with
-                                Relaxing Area/ Công viên tuổi thơ và khu thư giản</p>
-                            <p><i>23.</i>Outdoor Fitness/ Khu tập thể dục/ Gym ngoài trời
-                                Elderly Garden/ Vườn dưỡng sinh</p>
-                            <p><i>24.</i>Game Corner (Checkerboard)/ Góc thư giản (bàn cờ)</p>
-                            <p><i>25.</i>Shophouse Walkway/ Phố mua sắm</p>
-                        </div>-->
-            <div class="col-sm-12"> 
-                <img src="{{base_url()}}public/images/6.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="{{base_url()}}public/images/7.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="{{base_url()}}public/images/8.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="{{base_url()}}public/images/12.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
+        <div class="row subtitle-row fr-view" style="font-size:18px;text-align: left;">
+            <?= $noi_dung_muc1 ?>
         </div><!-- /row -->
     </div>
 </div><!-- /slide6-->

@@ -441,6 +441,152 @@ class Member extends MY_Controller {
         }
     }
 
+    function editmuc1() {
+        if (isset($_POST['muc1'])) {
+            $this->load->model("option_model");
+            $post_title = $_POST['post_titles'];
+            $post_content = $_POST['post_contents'];
+            $tieu_de = $this->option_model->where(array('name' => "muc1_header"))->as_array()->get();
+            $noi_dung = $this->option_model->where(array('name' => "muc1_content"))->as_array()->get();
+            if (!empty($tieu_de)) {
+                $id = $tieu_de['id_option'];
+                $this->option_model->update(array("content" => $post_title), $id);
+            } else {
+                $this->option_model->insert(array("name" => "muc1_header", "content" => $post_title));
+            }
+            if (!empty($noi_dung)) {
+                $id = $noi_dung['id_option'];
+                $this->option_model->update(array("content" => $post_content), $id);
+            } else {
+                $this->option_model->insert(array("name" => "muc1_content", "content" => $post_content));
+            }
+            redirect('member/editmuc1', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
+        } else {
+            $this->load->model("option_model");
+            $tieu_de = $this->option_model->where(array('name' => "muc1_header"))->as_array()->get();
+            $noi_dung = $this->option_model->where(array('name' => "muc1_content"))->as_array()->get();
+            if (!empty($tieu_de))
+                $this->data['tieu_de'] = $tieu_de['content'];
+            if (!empty($noi_dung))
+                $this->data['noi_dung'] = $noi_dung['content'];
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_editor.min.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_style.min.css");
+            /////////// Plugin
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/code_view.min.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/char_counter.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/code_view.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/colors.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/emoticons.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/file.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/fullscreen.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/image.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/image_manager.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/line_breaker.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/quick_insert.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/table.css");
+
+            array_push($this->data['javascript_tag'], base_url() . "public/js/autoNumeric.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
+            ///////// Editor
+            array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
+            /////////// Plugin
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/code_view.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/align.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/char_counter.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/colors.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/emoticons.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/entities.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/font_size.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/fullscreen.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/image.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/image_manager.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/link.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/lists.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/paragraph_format.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/paragraph_style.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/quick_insert.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/save.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/url.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/video.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/languages/en_gb.js");
+            echo $this->blade->view()->make('page/page', $this->data)->render();
+        }
+    }
+
+    function editmuc2() {
+        if (isset($_POST['muc2'])) {
+            $this->load->model("option_model");
+            $post_title = $_POST['post_titles'];
+            $post_content = $_POST['post_contents'];
+            $tieu_de = $this->option_model->where(array('name' => "muc2_header"))->as_array()->get();
+            $noi_dung = $this->option_model->where(array('name' => "muc2_content"))->as_array()->get();
+            if (!empty($tieu_de)) {
+                $id = $tieu_de['id_option'];
+                $this->option_model->update(array("content" => $post_title), $id);
+            } else {
+                $this->option_model->insert(array("name" => "muc2_header", "content" => $post_title));
+            }
+            if (!empty($noi_dung)) {
+                $id = $noi_dung['id_option'];
+                $this->option_model->update(array("content" => $post_content), $id);
+            } else {
+                $this->option_model->insert(array("name" => "muc2_content", "content" => $post_content));
+            }
+            redirect('member/editmuc2', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
+        } else {
+            $this->load->model("option_model");
+            $tieu_de = $this->option_model->where(array('name' => "muc2_header"))->as_array()->get();
+            $noi_dung = $this->option_model->where(array('name' => "muc2_content"))->as_array()->get();
+            if (!empty($tieu_de))
+                $this->data['tieu_de'] = $tieu_de['content'];
+            if (!empty($noi_dung))
+                $this->data['noi_dung'] = $noi_dung['content'];
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_editor.min.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_style.min.css");
+            /////////// Plugin
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/code_view.min.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/char_counter.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/code_view.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/colors.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/emoticons.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/file.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/fullscreen.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/image.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/image_manager.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/line_breaker.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/quick_insert.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/table.css");
+
+            array_push($this->data['javascript_tag'], base_url() . "public/js/autoNumeric.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
+            ///////// Editor
+            array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
+            /////////// Plugin
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/code_view.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/align.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/char_counter.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/colors.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/emoticons.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/entities.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/font_size.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/fullscreen.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/image.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/image_manager.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/link.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/lists.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/paragraph_format.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/paragraph_style.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/quick_insert.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/save.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/url.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/video.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/languages/en_gb.js");
+            echo $this->blade->view()->make('page/page', $this->data)->render();
+        }
+    }
+
     /*
      * TIN
      */
@@ -894,6 +1040,70 @@ class Member extends MY_Controller {
                     $this->data['img_banner'] = $img_banner;
                 }
             }
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/fileinput.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_editor.min.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_style.min.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/colors.css");
+
+            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/colors.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
+            echo $this->blade->view()->make('page/page', $this->data)->render();
+        }
+    }
+
+    function editmuchinhanh() {
+        if (isset($_POST['muchinhanh'])) {
+            $this->load->model("option_model");
+            $this->load->model("hinhanh_model");
+            $arr_hinhanh = $this->input->post('id_hinhanh');
+
+            $muc_hinhanh = $this->option_model->where('name', "muc_hinhanh")->as_array()->get_all();
+            /*
+             * DELETE
+             */
+            foreach ($muc_hinhanh as $hinhanh) {
+                $id_hinhanh = $hinhanh['content'];
+                if (($key = array_search($id_hinhanh, $arr_hinhanh)) !== false) {
+                    unset($arr_hinhanh[$key]);
+                } else {
+                    $id = $hinhanh['id_option'];
+                    $this->option_model->delete($id);
+                }
+            }
+            /*
+             * INSERT
+             */
+            foreach ($arr_hinhanh as $idhinhanh) {
+                $this->option_model->insert(array("content" => $idhinhanh, 'name' => "muc_hinhanh"));
+                $this->hinhanh_model->update(array('deleted' => 0), $idhinhanh);
+            }
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
+        } else {
+            $this->load->model("option_model");
+            $this->load->model("hinhanh_model");
+            $muc_hinhanh = $this->option_model->where('name', "muc_hinhanh")->as_array()->get_all();
+            $html = $htmlcon = $htmlinput = '';
+            foreach ($muc_hinhanh as $hinhanh) {
+                $id_hinhanh = $hinhanh['content'];
+                $img = $this->hinhanh_model->where(array('id_hinhanh' => $id_hinhanh))->as_array()->get();
+                if (!empty($img)) {
+                    $html .= "\"<img src='" . base_url() . $img['thumb_src'] . "' class='file-preview-image' alt='" . $img['ten_hinhanh'] . "' title='" . $img['ten_hinhanh'] . "'>\",";
+                    $htmlcon .= "{
+                        caption: '" . $img['ten_hinhanh'] . "',
+                        width: '120px',
+                        url: '" . base_url() . "member/deleteImage/1',
+                        key: " . $img['id_hinhanh'] . "
+                    },";
+                    $htmlinput .= "<input type='hidden' name='id_hinhanh[]' value='" . $img['id_hinhanh'] . "' class='hinhanh'>";
+                }
+            }
+            $this->data['htmlinput'] = $htmlinput;
+            $this->data['html'] = $html;
+            $this->data['htmlcon'] = $htmlcon;
+
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/fileinput.css");
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_editor.min.css");
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_style.min.css");

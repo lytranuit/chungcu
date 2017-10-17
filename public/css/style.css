@@ -352,7 +352,7 @@ section{
 }
 
 #slide-3 {
-    background-color: #000;
+    background-color:  rgba(0, 0, 0, 0.38);
     margin: 0 auto;
     overflow: hidden;
     padding: 0;
@@ -421,10 +421,12 @@ section{
 
 #slide-5 {
     background-color: white;
-    color: green;
+
     padding-top: 50px;
 }
-
+#slide-5 .title-row{
+    color: green;
+}
 #slide-7 {
     border-top: 5px solid #74e43c;
     background-color: #e6e6e6;

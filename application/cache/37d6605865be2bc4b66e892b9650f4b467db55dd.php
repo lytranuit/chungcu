@@ -29,19 +29,50 @@
             </li>
             <?php if($is_admin): ?>
             <li>
+                <a href="<?php echo e(get_url_seo("member/editmuchinhanh")); ?>">
+<!--                    <i class="icon icon-envelope"></i>-->
+                    Trang chủ (Hình ảnh) </a>
+            </li>
+            <li>
+                <a href="<?php echo e(get_url_seo("member/editmuc1")); ?>">
+<!--                    <i class="icon icon-envelope"></i>-->
+                    Trang chủ (Mục 1) </a>
+            </li>
+            <li>
+                <a href="<?php echo e(get_url_seo("member/editmuc2")); ?>">
+<!--                    <i class="icon icon-envelope"></i>-->
+                    Trang chủ (Mục 2) </a>
+            </li>
+            <li>
                 <a href="<?php echo e(get_url_seo("member/quanlypage")); ?>">
-                    <i class="glyphicon glyphicon-flag"></i>
+                    <!--<i class="glyphicon glyphicon-flag"></i>-->
                     Page</a>
             </li>
             <li>
+                <a href="<?php echo e(get_url_seo("member/quanlymenu")); ?>">
+<!--                    <i class="icon icon-envelope"></i>-->
+                    Menu </a>
+            </li>
+            <li>
                 <a href="<?php echo e(get_url_seo("member/slider")); ?>">
-                    <i class="glyphicon glyphicon-flag"></i>
+                    <!--<i class="glyphicon glyphicon-flag"></i>-->
                     Slider </a>
             </li>
+            <li>
+                <a href="<?php echo e(get_url_seo("member/quanlymessage")); ?>">
+                    <i class="icon icon-envelope"></i>
+                    Tin nhắn </a>
+            </li>
+            <li>
+                <a href="<?php echo e(get_url_seo("member/editbanner")); ?>">
+<!--                    <i class="icon icon-envelope"></i>-->
+                    Banner </a>
+            </li>
+
             <?php endif; ?>
             <li>
                 <a href="<?php echo e(get_url_seo("index/logout")); ?>">
-                    <i class="glyphicon glyphicon-flag"></i>
+                    <!--<i class="glyphicon glyphicon-flag"></i>-->
                     Đăng xuất </a>
             </li>
         </ul>
