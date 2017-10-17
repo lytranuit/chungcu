@@ -185,7 +185,7 @@ echo $widget->sliderhome();
     </div><!-- /row -->
 </div><!-- /container -->
 <!-- === Slide 5 Mặt bằng === -->
-<div class="slide story" id="slide-5" data-slide ='5'>
+<div class="slide story show_more" id="slide-5" data-slide ='5'>
     <div class="container">
         <div class="row title-row">
             <div class="col-12 font-semibold">Mặt bằng</div>
@@ -221,8 +221,9 @@ echo $widget->sliderhome();
         </div><!-- /row -->
     </div>
 </div>
+
 <!-- === Slide 6 - Tiện ichs === -->
-<div class="slide story" id="slide-6" data-slide="6">
+<div class="slide story show_more" id="slide-6" data-slide="6">
     <div class="container">
         <div class="row title-row">
             <div class="col-12 font-semibold">Tiện ích</div>
@@ -277,69 +278,71 @@ echo $widget->sliderhome();
                 <img src="{{base_url()}}public/images/12.jpg" class="img-responsive onlyone" data-style="fadeIn" />
             </div>
         </div><!-- /row -->
-        <div class="row content-row">
-            <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown'>
-                <a href="{{get_url_page(10)}}">
-                    <div class="featured-img hover1">
-                        <img class="img-responsive" src="{{base_url()}}/public/images/trung-tam-the-duc-the-thao-sport-resort.jpg" alt="Trung tam the duc the thao   Celadon City">
-                    </div> 
-                    <p style="    background: rgba(255, 0, 0, 0.55);">Trung Tâm Thể Thao Sport &amp; Resort</p> 
-                </a>
-            </div>
-            <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.2s;">
-                <a href="{{get_url_page(8)}}">
-                    <p style="background: green;">Trung Tâm Thương Mại Aeon</p> 
-                    <div class="featured-img hover1">
-                        <img class="img-responsive" src="{{base_url()}}/public/images/aeon-tan-phu.jpg" alt="Aeon tan phu">
-                    </div> 
-                </a>
-            </div>
-            <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.4s;">
-                <a href="{{get_url_page(17)}}">
-                    <div class="featured-img hover1">
-                        <img class="img-responsive" src="{{base_url()}}/public/images/trung-tam-van-hoa-celadon-city.jpg" alt="Trung tam van hoa celadon city">
-                    </div> 
-                    <p style="background: rgb(48, 103, 96);">Trung Tâm Văn Hóa</p> 
-                </a>
-            </div>
-
+    </div>
+</div><!-- /slide6-->
+<div class="container" style="margin-bottom: 60px;">
+    <div class="row content-row">
+        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown'>
+            <a href="{{get_url_page(10)}}">
+                <div class="featured-img hover1">
+                    <img class="img-responsive" src="{{base_url()}}/public/images/trung-tam-the-duc-the-thao-sport-resort.jpg" alt="Trung tam the duc the thao   Celadon City">
+                </div> 
+                <p style="    background: rgba(255, 0, 0, 0.55);">Trung Tâm Thể Thao Sport &amp; Resort</p> 
+            </a>
         </div>
-        <div class="row content-row">
-            <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.6s;">
-                <a href="{{get_url_page(9)}}">
-                    <div class="featured-img hover1">
-                        <img class="img-responsive" src="{{base_url()}}/public/images/truonghoc.jpg" alt="Trường học">
-                    </div>
-                    <p style="background: rgb(18, 18, 76);">
-                        Trường học
-                    </p> 
-                </a>
-            </div>
-            <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.8s;">
-                <a href="{{get_url_page(18)}}">
-                    <p style="background: brown;">Công Viên Nội Khu</p> 
-                    <div class="featured-img hover1">
-                        <img class="img-responsive" src="{{base_url()}}/public/images/32.jpg" alt="Cong vien noi khu">
-                    </div> 
-                </a>
-            </div>
-            <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 1s;">
-                <a href="{{get_url_page(19)}}">
-                    <div class="featured-img hover1">
-                        <img class="img-responsive" src="{{base_url()}}/public/images/xe-dien-noi-khu-celadon-city.jpg" alt="Xe dien noi khu celadon city">
-                    </div> 
-                    <p style="background: #b260ef;">Xe Điện Nội Khu
-                    </p> 
-                </a>
-            </div>
+        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.2s;">
+            <a href="{{get_url_page(8)}}">
+                <p style="background: green;">Trung Tâm Thương Mại Aeon</p> 
+                <div class="featured-img hover1">
+                    <img class="img-responsive" src="{{base_url()}}/public/images/aeon-tan-phu.jpg" alt="Aeon tan phu">
+                </div> 
+            </a>
+        </div>
+        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.4s;">
+            <a href="{{get_url_page(17)}}">
+                <div class="featured-img hover1">
+                    <img class="img-responsive" src="{{base_url()}}/public/images/trung-tam-van-hoa-celadon-city.jpg" alt="Trung tam van hoa celadon city">
+                </div> 
+                <p style="background: rgb(48, 103, 96);">Trung Tâm Văn Hóa</p> 
+            </a>
+        </div>
+
+    </div>
+    <div class="row content-row">
+        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.6s;">
+            <a href="{{get_url_page(9)}}">
+                <div class="featured-img hover1">
+                    <img class="img-responsive" src="{{base_url()}}/public/images/truonghoc.jpg" alt="Trường học">
+                </div>
+                <p style="background: rgb(18, 18, 76);">
+                    Trường học
+                </p> 
+            </a>
+        </div>
+        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.8s;">
+            <a href="{{get_url_page(18)}}">
+                <p style="background: brown;">Công Viên Nội Khu</p> 
+                <div class="featured-img hover1">
+                    <img class="img-responsive" src="{{base_url()}}/public/images/32.jpg" alt="Cong vien noi khu">
+                </div> 
+            </a>
+        </div>
+        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 1s;">
+            <a href="{{get_url_page(19)}}">
+                <div class="featured-img hover1">
+                    <img class="img-responsive" src="{{base_url()}}/public/images/xe-dien-noi-khu-celadon-city.jpg" alt="Xe dien noi khu celadon city">
+                </div> 
+                <p style="background: #b260ef;">Xe Điện Nội Khu
+                </p> 
+            </a>
         </div>
     </div>
-</div><!-- /slide4 -->
+</div>
 <?php echo $widget->footer(); ?>
 
 <script>
     $(document).ready(function (e) {
-//    $('#myModal').modal('show');
+        //    $('#myModal').modal('show');
         /*
          * Silder 3
          */
@@ -462,18 +465,26 @@ echo $widget->sliderhome();
         });
         $(document).scroll();
         /*
+         * show more slide
+         */
+        $(".show_more").each(function () {
+            var append = '<div style="height: 140px;"><div class="bounce123"><i class="fa fa-angle-double-down"></i></div></div>';
+            var $this = $(this);
+            $(append).insertAfter($this);
+        });
+        /*
          * Chan debugger
          */
-//    $(document).keydown(function (event) {
-//        if (event.keyCode == 123) {
-//            return false;
-//        } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
-//            return false;  //Prevent from ctrl+shift+i
-//        }
-//    });
-//    $(document).on("contextmenu", function (e) {
-//        e.preventDefault();
-//    });
+        //    $(document).keydown(function (event) {
+        //        if (event.keyCode == 123) {
+        //            return false;
+        //        } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+        //            return false;  //Prevent from ctrl+shift+i
+        //        }
+        //    });
+        //    $(document).on("contextmenu", function (e) {
+        //        e.preventDefault();
+        //    });
     });
 
     var delay = (function () {

@@ -22,5 +22,10 @@ $(document).ready(function () {
             $(this).removeClass("open");
         }
     });
-
+    $(document).off("click", '.bounce123').on("click", '.bounce123', function () {
+        var parent = $(this).parent();
+        var box = parent.prev(".show_more");
+        box.removeClass("show_more");
+        parent.remove();
+    });
 });
