@@ -32,15 +32,6 @@ class MY_Controller extends CI_Controller {
             $this->data['template'] = "left";
             $this->data['title'] = "";
         }
-
-        $this->load->model("slider_model");
-        $this->load->model("hinhanh_model");
-        $arr_slider = $this->slider_model->where(array('deleted' => 0))->order_by('order')->as_array()->get_all();
-        foreach ($arr_slider as &$slider) {
-            $hinh = $this->hinhanh_model->where(array('id_hinhanh' => $slider['id_hinhanh']))->as_array()->get_all();
-            $slider['hinhanh'] = $hinh[0]['slider_src'];
-        }
-        $this->data['arr_slider'] = $arr_slider;
     }
 
 ////////////

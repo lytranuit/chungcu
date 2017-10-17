@@ -29,12 +29,17 @@
             @if($is_admin)
             <li>
                 <a href="{{get_url_seo("member/quanlypage")}}">
-                    <i class="glyphicon glyphicon-flag"></i>
+                    <!--<i class="glyphicon glyphicon-flag"></i>-->
                     Page</a>
             </li>
             <li>
+                <a href="{{get_url_seo("member/quanlymenu")}}">
+<!--                    <i class="icon icon-envelope"></i>-->
+                    Menu </a>
+            </li>
+            <li>
                 <a href="{{get_url_seo("member/slider")}}">
-                    <i class="glyphicon glyphicon-flag"></i>
+                    <!--<i class="glyphicon glyphicon-flag"></i>-->
                     Slider </a>
             </li>
             <li>
@@ -42,10 +47,17 @@
                     <i class="icon icon-envelope"></i>
                     Tin nhắn </a>
             </li>
+            <li>
+                <a href="{{get_url_seo("member/editbanner")}}">
+<!--                    <i class="icon icon-envelope"></i>-->
+                    Banner </a>
+            </li>
+            
+
             @endif
             <li>
                 <a href="{{get_url_seo("index/logout")}}">
-                    <i class="glyphicon glyphicon-flag"></i>
+                    <!--<i class="glyphicon glyphicon-flag"></i>-->
                     Đăng xuất </a>
             </li>
         </ul>

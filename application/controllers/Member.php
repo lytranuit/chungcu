@@ -4,7 +4,7 @@ class Member extends MY_Controller {
 
     function __construct() {
         parent::__construct();
-        
+
         ////////////////////////////////
         $module = $this->router->fetch_module();
         ////////////
@@ -71,6 +71,7 @@ class Member extends MY_Controller {
             "quanlytintuc",
             "dangtintuc",
             "edittintuc",
+            "editbanner",
             "activate_tintuc",
             "deactivate_tintuc",
             "remove_tintuc",
@@ -853,6 +854,55 @@ class Member extends MY_Controller {
             array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/url.min.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/video.min.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/languages/en_gb.js");
+            echo $this->blade->view()->make('page/page', $this->data)->render();
+        }
+    }
+
+    function editbanner() {
+        if (isset($_POST['banner'])) {
+            $this->load->model("option_model");
+            $this->load->model("hinhanh_model");
+            $idhinhanh = $this->input->post('id_hinhanh');
+            $banner = $this->option_model->where('name', "banner")->as_array()->get();
+            if (!empty($banner)) {
+                $id = $banner['id_option'];
+                $this->option_model->update(array("content" => $idhinhanh), $id);
+                $this->hinhanh_model->update(array('deleted' => 0), $idhinhanh);
+            } else {
+                $this->option_model->insert(array("content" => $idhinhanh, 'name' => "banner"));
+                $this->hinhanh_model->update(array('deleted' => 0), $idhinhanh);
+            }
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
+        } else {
+            $this->load->model("option_model");
+            $this->load->model("hinhanh_model");
+            $banner = $this->option_model->where('name', "banner")->as_array()->get();
+            if (!empty($banner)) {
+                $id_img_banner = $banner['content'];
+                $img_banner = $this->hinhanh_model->where(array('id_hinhanh' => $id_img_banner))->as_array()->get();
+                if (!empty($img_banner)) {
+                    $html = "\"<img src='" . base_url() . $img_banner['thumb_src'] . "' class='file-preview-image' alt='" . $img_banner['ten_hinhanh'] . "' title='" . $img_banner['ten_hinhanh'] . "'>\",";
+                    $htmlcon = "{
+                        caption: '" . $img_banner['ten_hinhanh'] . "',
+                        width: '120px',
+                        url: '" . base_url() . "member/deleteImage/1',
+                        key: " . $img_banner['id_hinhanh'] . "
+                    },";
+                    $img_banner['hinhhtml'] = $html;
+                    $img_banner['hinhconf'] = $htmlcon;
+                    $this->data['img_banner'] = $img_banner;
+                }
+            }
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/fileinput.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_editor.min.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_style.min.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/colors.css");
+
+            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/colors.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
             echo $this->blade->view()->make('page/page', $this->data)->render();
         }
     }

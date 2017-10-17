@@ -1,7 +1,6 @@
-<div class="hidden">
-    <div class="col-12"><a data-fancybox-group="portfolio" class="fancybox1" href="{{base_url()}}public/images/quangcao.jpg"><img class="thumb" src="{{base_url()}}public/images/quangcao.jpg" alt=""></a></div>
-</div>
+
 <?php
+echo $widget->banner();
 echo $widget->chat();
 echo $widget->header();
 echo $widget->sliderhome();
@@ -355,14 +354,6 @@ echo $widget->sliderhome();
             left = (width - scceen) / 2;
         }
         $(".slide-hinhanh").css({"width": width + "px", "left": -left + "px"});
-        $(".fancybox1").fancybox({
-            padding: 10,
-            helpers: {
-                overlay: {
-                    locked: false
-                }
-            }
-        }).trigger('click');
         $(".fancybox").fancybox({
             padding: 10,
             helpers: {

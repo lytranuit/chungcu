@@ -193,4 +193,18 @@ class Widget {
         echo $this->blade->view()->make('widget/chat', $this->data)->render();
     }
 
+    function banner() {
+        $this->CI->load->model("option_model");
+        $this->CI->load->model("hinhanh_model");
+        $banner = $this->CI->option_model->where('name', "banner")->as_array()->get();
+        if (!empty($banner)) {
+            $id_img_banner = $banner['content'];
+            $img_banner = $this->CI->hinhanh_model->where(array('id_hinhanh' => $id_img_banner))->as_array()->get();
+            if (!empty($img_banner)) {
+                $this->data['img_banner'] = $img_banner;
+            }
+        }
+        echo $this->blade->view()->make('widget/banner', $this->data)->render();
+    }
+
 }
