@@ -26,10 +26,10 @@
                     </button>
                     <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar">
                         <li class="nav-item">
-                            <a class="nav-link link" href="{{base_url()}}"><span class="icon icon-home"></span> TRANG CHỦ<br></a>
+                            <a class="nav-link link" href="{{base_url()}}"><span class="icon icon-home"></span>TRANG CHỦ<br></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link" href="{{get_url_page(1)}}"><span class="icon icon-user"></span> GIỚI THIỆU<br>
+                            <a class="nav-link link" href="{{get_url_page(1)}}"><span class="icon icon-user"></span>GIỚI THIỆU<br>
                             </a>
                         </li>
                         <li class="nav-item dropdown">
@@ -61,10 +61,10 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link" href="{{get_url_page(4)}}" aria-expanded="false"><span class="icon icon-shopping-cart"></span> THANH TOÁN</a>
+                            <a class="nav-link link" href="{{get_url_page(4)}}" aria-expanded="false"><span class="icon icon-shopping-cart"></span>THANH TOÁN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link" href="{{get_url_page(5)}}" aria-expanded="false"><span class="icon icon-envelope"></span> LIÊNHỆ</a>
+                            <a class="nav-link link" href="{{get_url_page(5)}}" aria-expanded="false"><span class="icon icon-envelope"></span>LIÊNHỆ</a>
                         </li>
                     </ul>
                     <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
@@ -83,3 +83,4 @@
 <script src="{{base_url()}}public/assets/touch-swipe/jquery.touch-swipe.min.js"></script>
 <script src="{{base_url()}}public/assets/viewport-checker/jquery.viewportchecker.js"></script>
 <script src="{{base_url()}}public/assets/theme/js/script.js"></script>
+<script src="{{base_url()}}public/js/script-header.js"></script>

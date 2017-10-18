@@ -69,6 +69,7 @@ class Member extends MY_Controller {
             "activate",
             "deactivate",
             "quanlytintuc",
+            "quanlymenu",
             "dangtintuc",
             "edittintuc",
             "editbanner",
@@ -707,6 +708,11 @@ class Member extends MY_Controller {
         array_push($this->data['stylesheet_tag'], base_url() . "public/css/dataTables.bootstrap.min.css");
         array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.dataTables.min.js");
         array_push($this->data['javascript_tag'], base_url() . "public/js/dataTables.bootstrap.min.js");
+        echo $this->blade->view()->make('page/page', $this->data)->render();
+    }
+
+    public function quanlymenu() {
+        array_push($this->data['javascript_tag'], base_url() . "public/js/kendo.all.min.js");
         echo $this->blade->view()->make('page/page', $this->data)->render();
     }
 
