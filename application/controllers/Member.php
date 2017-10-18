@@ -858,6 +858,8 @@ class Member extends MY_Controller {
     }
 
     public function quanlymenu() {
+        array_push($this->data['stylesheet_tag'], base_url() . "public/css/kendo.common.min.css");
+        array_push($this->data['stylesheet_tag'], base_url() . "public/css/kendo.default.min.css");
         array_push($this->data['javascript_tag'], base_url() . "public/js/kendo.all.min.js");
         echo $this->blade->view()->make('page/page', $this->data)->render();
     }
