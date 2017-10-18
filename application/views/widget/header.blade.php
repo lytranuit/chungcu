@@ -78,6 +78,8 @@
     </nav>
 
 </section>
+
+<script src="{{base_url()}}public/js/jquery.validate.js"></script>
 <script src="{{base_url()}}public/assets/smooth-scroll/smooth-scroll.js"></script>
 <script src="{{base_url()}}public/assets/dropdown/js/script.min.js"></script>
 <script src="{{base_url()}}public/assets/touch-swipe/jquery.touch-swipe.min.js"></script>

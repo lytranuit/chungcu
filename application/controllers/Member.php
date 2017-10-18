@@ -30,7 +30,7 @@ class Member extends MY_Controller {
 //            base_url() . "public/css/responsive.css",
 //        );
         $this->data['javascript_tag'] = array(
-            base_url() . "public/js/jquery-1.10.2.min.js",
+            base_url() . "public/js/jquery-1.12.js",
             base_url() . "public/js/bootstrap.min.js",
             base_url() . "public/js/moment.js",
             base_url() . "public/js/jquery.inview.js",
@@ -116,7 +116,6 @@ class Member extends MY_Controller {
         } else {
             $user = $this->user_model->where(array('id' => $id_user))->as_array()->get_all();
             $this->data['user'] = $user[0];
-            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
             //echo $this->data['content'];
             echo $this->blade->view()->make('page/page', $this->data)->render();
         }
@@ -186,7 +185,6 @@ class Member extends MY_Controller {
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_style.min.css");
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/colors.css");
 
-            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/colors.min.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
@@ -239,7 +237,6 @@ class Member extends MY_Controller {
         } else {
             $this->data['id_user'] = $id_user;
             $this->data['success'] = $this->session->flashdata('success');
-            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
             echo $this->blade->view()->make('page/page', $this->data)->render();
         }
     }
@@ -337,7 +334,6 @@ class Member extends MY_Controller {
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/table.css");
 
             array_push($this->data['javascript_tag'], base_url() . "public/js/autoNumeric.js");
-            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
             ///////// Editor
             array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
@@ -412,7 +408,6 @@ class Member extends MY_Controller {
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/table.css");
 
             array_push($this->data['javascript_tag'], base_url() . "public/js/autoNumeric.js");
-            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
             ///////// Editor
             array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
@@ -487,7 +482,6 @@ class Member extends MY_Controller {
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/table.css");
 
             array_push($this->data['javascript_tag'], base_url() . "public/js/autoNumeric.js");
-            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
             ///////// Editor
             array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
@@ -560,7 +554,6 @@ class Member extends MY_Controller {
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/table.css");
 
             array_push($this->data['javascript_tag'], base_url() . "public/js/autoNumeric.js");
-            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
             ///////// Editor
             array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
@@ -679,7 +672,6 @@ class Member extends MY_Controller {
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/table.css");
 
             array_push($this->data['javascript_tag'], base_url() . "public/js/autoNumeric.js");
-            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
             ///////// Editor
             array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
@@ -786,7 +778,6 @@ class Member extends MY_Controller {
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/quick_insert.css");
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/table.css");
 
-            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
             ///////// Editor
             array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
@@ -858,8 +849,10 @@ class Member extends MY_Controller {
     }
 
     public function quanlymenu() {
-        array_push($this->data['stylesheet_tag'], base_url() . "public/css/kendo.common.min.css");
+        $this->load->model("pageweb_model");
+        $this->data['page'] = $this->pageweb_model->where("deleted", 0)->as_array()->get_all();
         array_push($this->data['stylesheet_tag'], base_url() . "public/css/kendo.default.min.css");
+        array_push($this->data['stylesheet_tag'], base_url() . "public/css/kendo.common.min.css");
         array_push($this->data['javascript_tag'], base_url() . "public/js/kendo.all.min.js");
         echo $this->blade->view()->make('page/page', $this->data)->render();
     }
@@ -906,7 +899,6 @@ class Member extends MY_Controller {
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/quick_insert.css");
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/table.css");
 
-            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
             ///////// Editor
             array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
@@ -985,7 +977,6 @@ class Member extends MY_Controller {
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/quick_insert.css");
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/table.css");
 
-            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
             ///////// Editor
             array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
@@ -1053,7 +1044,6 @@ class Member extends MY_Controller {
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_style.min.css");
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/colors.css");
 
-            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/colors.min.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
@@ -1117,7 +1107,6 @@ class Member extends MY_Controller {
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_style.min.css");
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/colors.css");
 
-            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/colors.min.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
@@ -1174,7 +1163,6 @@ class Member extends MY_Controller {
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/quick_insert.css");
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/table.css");
 
-            array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.validate.js");
             ///////// Editor
             array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
             /////////// Plugin

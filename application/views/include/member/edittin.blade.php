@@ -128,7 +128,7 @@
     <?php
     $html = $htmlcon = "";
     foreach ($tin['arr_hinhanh'] as $hinh) {
-        $html .="\"<img src='" . base_url() . $hinh['thumb_src'] . "' class='file-preview-image' alt='" . $hinh['ten_hinhanh'] . "' title='" . $hinh['ten_hinhanh'] . "'>\",";
+        $html .= "\"<img src='" . base_url() . $hinh['thumb_src'] . "' class='file-preview-image' alt='" . $hinh['ten_hinhanh'] . "' title='" . $hinh['ten_hinhanh'] . "'>\",";
         $htmlcon .= "{
         caption: '" . $hinh['ten_hinhanh'] . "',
         width: '120px',
