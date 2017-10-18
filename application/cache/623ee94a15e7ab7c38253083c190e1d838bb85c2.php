@@ -2,6 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
+<link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>public/images/favicon.ico">
 <title>
     <?php $__env->startSection("title"); ?> 
     Celadon City
@@ -16,8 +17,7 @@
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
-<![endif]-->       
-<link rel="shortcut icon" href="<?php echo e(base_url()); ?>public/img/ico/favicon.ico">
+<![endif]-->      
 <?php foreach($javascript_tag as $url): ?>
 <script src="<?php echo e($url); ?>"></script>
 <?php endforeach; ?>

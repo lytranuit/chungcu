@@ -1,7 +1,7 @@
-<div class="hidden">
-    <div class="col-12"><a data-fancybox-group="portfolio" class="fancybox1" href="<?php echo e(base_url()); ?>public/images/quangcao.jpg"><img class="thumb" src="<?php echo e(base_url()); ?>public/images/quangcao.jpg" alt=""></a></div>
-</div>
+
 <?php
+echo $widget->banner();
+echo $widget->chat();
 echo $widget->header();
 echo $widget->sliderhome();
 ?>
@@ -56,9 +56,9 @@ echo $widget->sliderhome();
 <!-- === SLide 3 - Portfolio -->
 <div class="slide story" id="slide-3" data-slide="3">
     <div class="row slide-hinhanh"> 
-        <?php for($i=22;$i<37;$i++): ?>
-        <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox hover1" href="<?php echo e(base_url()); ?>public/images/<?php echo e($i); ?>.jpg"><img class="thumb" src="<?php echo e(base_url()); ?>public/images/<?php echo e($i); ?>.jpg" alt=""></a></div>
-        <?php endfor; ?>
+        <?php foreach($muc_hinhanh as $hinhanh): ?>
+        <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox hover1" href="<?php echo e(base_url() . $hinhanh['img']['src']); ?>"><img class="thumb" src="<?php echo e(base_url() . $hinhanh['img']['src']); ?>" alt="<?php echo e($hinhanh['img']['real_hinhanh']); ?>"></a></div>
+        <?php endforeach; ?>
 
     </div>
 </div><!-- /slide3 -->
@@ -185,161 +185,97 @@ echo $widget->sliderhome();
     </div><!-- /row -->
 </div><!-- /container -->
 <!-- === Slide 5 Mặt bằng === -->
-<div class="slide story" id="slide-5" data-slide ='5'>
+<div class="slide story show_more" id="slide-5" data-slide ='5'>
     <div class="container">
         <div class="row title-row">
-            <div class="col-12 font-semibold">Mặt bằng</div>
+            <div class="col-12 font-semibold"><?php echo e(isset($tieu_de_muc1) ? $tieu_de_muc1 : ""); ?></div>
         </div><!-- /row -->
         <div class="row line-row">
             <div class="hr">&nbsp;</div>
         </div><!-- /row -->
-        <div class="row subtitle-row" style="font-size:18px;text-align: left;">
-            <div class="col-sm-12"> 
-                <img src="<?php echo e(base_url()); ?>public/images/14.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="<?php echo e(base_url()); ?>public/images/15.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="<?php echo e(base_url()); ?>public/images/16.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="<?php echo e(base_url()); ?>public/images/17.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="<?php echo e(base_url()); ?>public/images/18.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="<?php echo e(base_url()); ?>public/images/19.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="<?php echo e(base_url()); ?>public/images/20.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="<?php echo e(base_url()); ?>public/images/21.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
+        <div class="row subtitle-row fr-view" style="font-size:18px;text-align: left;">
+            <?= $noi_dung_muc1 ?>
         </div><!-- /row -->
     </div>
 </div>
+
 <!-- === Slide 6 - Tiện ichs === -->
-<div class="slide story" id="slide-6" data-slide="6">
+<div class="slide story show_more" id="slide-6" data-slide="6">
     <div class="container">
         <div class="row title-row">
-            <div class="col-12 font-semibold">Tiện ích</div>
+            <div class="col-12 font-semibold"><?php echo e(isset($tieu_de_muc2) ? $tieu_de_muc2 : ""); ?></div>
         </div><!-- /row -->
         <div class="row line-row">
             <div class="hr">&nbsp;</div>
         </div><!-- /row -->
-        <div class="row subtitle-row" style="font-size:18px;text-align: left;">
-            <!--            <div class="col-sm-6">
-                            <p><i>1.</i>Main entrance/ Lối vào</p>
-                            <p><i>2.</i>Drop-off station in Pedestrian area/ Điểm đưa đón khách tản bộ</p>
-                            <p><i>3.</i>Mini-clubhouse / Nhà chờ, khu Café</p>
-                            <p><i>4.</i>Outdoor Café/ Café ánh sao</p>
-                            <p><i>5.</i>Pool Deck/ Hồ bơi sinh thái</p>
-                            <p><i>6.</i>Children Pool With Water Play Equipment/ Đảo thiên đường trẻ thơ</p>
-                            <p><i>7.</i>Pavilion/ Lều nghĩ chân</p>
-                            <p><i>8.</i>Shallow Stream/ Suối lười</p>
-                            <p><i>9.</i>Aroma Garden/ Vườn thảo mộc</p>
-                            <p><i>10.</i>Bbq Area With Trellis/ Phố nướng BBQ</p>
-                            <p><i>11.</i>Reflexology Path/ Con đường thư giản</p>
-                            <p><i>12.</i>Grand Lawn/ Thảo nguyên xanh</p>
-                            <p><i>13.</i>Outdoor Amphitheatre/ Sân khấu ngoài trời</p>
-                            <p><i>14.</i>Stage With Cover Structure/ Sân khấu mái vòm</p>
-                            <p><i>15.</i>Activity Plaza/ Quảng trường ánh sáng</p>
-            
-            
-                        </div>
-                        <div class="col-sm-6">
-                            <p><i>16.</i>Community House/ Nhà cộng đồng</p>
-                            <p><i>17.</i>Open Lawn/ Đồng cỏ xanh</p>
-                            <p><i>18.</i>Light Well/ Giếng trời</p>
-                            <p><i>19.</i>Relaxing Garden/ Vườn thảo mộc</p>
-                            <p><i>20.</i>Vegetable Garden/ Vườn rau</p>
-                            <p><i>21.</i>Sand Playground/ Sa mạc vui vẻ</p>
-                            <p><i>22.</i>Thematic Children Playground with
-                                Relaxing Area/ Công viên tuổi thơ và khu thư giản</p>
-                            <p><i>23.</i>Outdoor Fitness/ Khu tập thể dục/ Gym ngoài trời
-                                Elderly Garden/ Vườn dưỡng sinh</p>
-                            <p><i>24.</i>Game Corner (Checkerboard)/ Góc thư giản (bàn cờ)</p>
-                            <p><i>25.</i>Shophouse Walkway/ Phố mua sắm</p>
-                        </div>-->
-            <div class="col-sm-12"> 
-                <img src="<?php echo e(base_url()); ?>public/images/6.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="<?php echo e(base_url()); ?>public/images/7.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="<?php echo e(base_url()); ?>public/images/8.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
-            <div class="col-sm-12"> 
-                <img src="<?php echo e(base_url()); ?>public/images/12.jpg" class="img-responsive onlyone" data-style="fadeIn" />
-            </div>
+        <div class="row subtitle-row fr-view" style="font-size:18px;text-align: left;">
+            <?= $noi_dung_muc1 ?>
         </div><!-- /row -->
-        <div class="row content-row">
-            <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown'>
-                <a href="<?php echo e(get_url_page(10)); ?>">
-                    <div class="featured-img hover1">
-                        <img class="img-responsive" src="<?php echo e(base_url()); ?>/public/images/trung-tam-the-duc-the-thao-sport-resort.jpg" alt="Trung tam the duc the thao   Celadon City">
-                    </div> 
-                    <p style="    background: rgba(255, 0, 0, 0.55);">Trung Tâm Thể Thao Sport &amp; Resort</p> 
-                </a>
-            </div>
-            <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.2s;">
-                <a href="<?php echo e(get_url_page(8)); ?>">
-                    <p style="background: green;">Trung Tâm Thương Mại Aeon</p> 
-                    <div class="featured-img hover1">
-                        <img class="img-responsive" src="<?php echo e(base_url()); ?>/public/images/aeon-tan-phu.jpg" alt="Aeon tan phu">
-                    </div> 
-                </a>
-            </div>
-            <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.4s;">
-                <a href="<?php echo e(get_url_page(17)); ?>">
-                    <div class="featured-img hover1">
-                        <img class="img-responsive" src="<?php echo e(base_url()); ?>/public/images/trung-tam-van-hoa-celadon-city.jpg" alt="Trung tam van hoa celadon city">
-                    </div> 
-                    <p style="background: rgb(48, 103, 96);">Trung Tâm Văn Hóa</p> 
-                </a>
-            </div>
-
+    </div>
+</div><!-- /slide6-->
+<div class="container" style="margin-bottom: 60px;">
+    <div class="row content-row">
+        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown'>
+            <a href="<?php echo e(get_url_page(10)); ?>">
+                <div class="featured-img hover1">
+                    <img class="img-responsive" src="<?php echo e(base_url()); ?>/public/images/trung-tam-the-duc-the-thao-sport-resort.jpg" alt="Trung tam the duc the thao   Celadon City">
+                </div> 
+                <p style="    background: rgba(255, 0, 0, 0.55);">Trung Tâm Thể Thao Sport &amp; Resort</p> 
+            </a>
         </div>
-        <div class="row content-row">
-            <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.6s;">
-                <a href="<?php echo e(get_url_page(9)); ?>">
-                    <div class="featured-img hover1">
-                        <img class="img-responsive" src="<?php echo e(base_url()); ?>/public/images/truonghoc.jpg" alt="Trường học">
-                    </div>
-                    <p style="background: rgb(18, 18, 76);">
-                        Trường học
-                    </p> 
-                </a>
-            </div>
-            <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.8s;">
-                <a href="<?php echo e(get_url_page(18)); ?>">
-                    <p style="background: brown;">Công Viên Nội Khu</p> 
-                    <div class="featured-img hover1">
-                        <img class="img-responsive" src="<?php echo e(base_url()); ?>/public/images/32.jpg" alt="Cong vien noi khu">
-                    </div> 
-                </a>
-            </div>
-            <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 1s;">
-                <a href="<?php echo e(get_url_page(19)); ?>">
-                    <div class="featured-img hover1">
-                        <img class="img-responsive" src="<?php echo e(base_url()); ?>/public/images/xe-dien-noi-khu-celadon-city.jpg" alt="Xe dien noi khu celadon city">
-                    </div> 
-                    <p style="background: #b260ef;">Xe Điện Nội Khu
-                    </p> 
-                </a>
-            </div>
+        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.2s;">
+            <a href="<?php echo e(get_url_page(8)); ?>">
+                <p style="background: green;">Trung Tâm Thương Mại Aeon</p> 
+                <div class="featured-img hover1">
+                    <img class="img-responsive" src="<?php echo e(base_url()); ?>/public/images/aeon-tan-phu.jpg" alt="Aeon tan phu">
+                </div> 
+            </a>
+        </div>
+        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.4s;">
+            <a href="<?php echo e(get_url_page(17)); ?>">
+                <div class="featured-img hover1">
+                    <img class="img-responsive" src="<?php echo e(base_url()); ?>/public/images/trung-tam-van-hoa-celadon-city.jpg" alt="Trung tam van hoa celadon city">
+                </div> 
+                <p style="background: rgb(48, 103, 96);">Trung Tâm Văn Hóa</p> 
+            </a>
+        </div>
+
+    </div>
+    <div class="row content-row">
+        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.6s;">
+            <a href="<?php echo e(get_url_page(9)); ?>">
+                <div class="featured-img hover1">
+                    <img class="img-responsive" src="<?php echo e(base_url()); ?>/public/images/truonghoc.jpg" alt="Trường học">
+                </div>
+                <p style="background: rgb(18, 18, 76);">
+                    Trường học
+                </p> 
+            </a>
+        </div>
+        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.8s;">
+            <a href="<?php echo e(get_url_page(18)); ?>">
+                <p style="background: brown;">Công Viên Nội Khu</p> 
+                <div class="featured-img hover1">
+                    <img class="img-responsive" src="<?php echo e(base_url()); ?>/public/images/32.jpg" alt="Cong vien noi khu">
+                </div> 
+            </a>
+        </div>
+        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 1s;">
+            <a href="<?php echo e(get_url_page(19)); ?>">
+                <div class="featured-img hover1">
+                    <img class="img-responsive" src="<?php echo e(base_url()); ?>/public/images/xe-dien-noi-khu-celadon-city.jpg" alt="Xe dien noi khu celadon city">
+                </div> 
+                <p style="background: #b260ef;">Xe Điện Nội Khu
+                </p> 
+            </a>
         </div>
     </div>
-</div><!-- /slide4 -->
+</div>
 <?php echo $widget->footer(); ?>
 
 <script>
     $(document).ready(function (e) {
-//    $('#myModal').modal('show');
+        //    $('#myModal').modal('show');
         /*
          * Silder 3
          */
@@ -354,14 +290,6 @@ echo $widget->sliderhome();
             left = (width - scceen) / 2;
         }
         $(".slide-hinhanh").css({"width": width + "px", "left": -left + "px"});
-        $(".fancybox1").fancybox({
-            padding: 10,
-            helpers: {
-                overlay: {
-                    locked: false
-                }
-            }
-        }).trigger('click');
         $(".fancybox").fancybox({
             padding: 10,
             helpers: {
@@ -470,18 +398,26 @@ echo $widget->sliderhome();
         });
         $(document).scroll();
         /*
+         * show more slide
+         */
+        $(".show_more").each(function () {
+            var append = '<div style="height: 140px;"><div class="bounce123"><i class="fa fa-angle-double-down"></i></div></div>';
+            var $this = $(this);
+            $(append).insertAfter($this);
+        });
+        /*
          * Chan debugger
          */
-//    $(document).keydown(function (event) {
-//        if (event.keyCode == 123) {
-//            return false;
-//        } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
-//            return false;  //Prevent from ctrl+shift+i
-//        }
-//    });
-//    $(document).on("contextmenu", function (e) {
-//        e.preventDefault();
-//    });
+        //    $(document).keydown(function (event) {
+        //        if (event.keyCode == 123) {
+        //            return false;
+        //        } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+        //            return false;  //Prevent from ctrl+shift+i
+        //        }
+        //    });
+        //    $(document).on("contextmenu", function (e) {
+        //        e.preventDefault();
+        //    });
     });
 
     var delay = (function () {

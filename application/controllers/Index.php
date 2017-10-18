@@ -68,9 +68,13 @@ class Index extends MY_Controller {
 //        print_r($this->data['arr_tin']);
 //        die();
 
-
         $this->load->model("slider_model");
         $this->load->model("hinhanh_model");
+        $this->load->model("option_model");
+
+        /*
+         * SLIDER
+         */
         $arr_slider = $this->slider_model->where(array('deleted' => 0))->order_by('order')->as_array()->get_all();
         foreach ($arr_slider as &$slider) {
             $hinh = $this->hinhanh_model->where(array('id_hinhanh' => $slider['id_hinhanh']))->as_array()->get_all();
@@ -80,6 +84,38 @@ class Index extends MY_Controller {
 
         array_push($this->data['stylesheet_tag'], base_url() . "public/css/flexslider.css");
         array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.flexslider.js");
+
+        /*
+         * Hình ảnh
+         */
+        $muc_hinhanh = $this->option_model->where('name', "muc_hinhanh")->as_array()->get_all();
+        foreach ($muc_hinhanh as &$hinhanh) {
+            $id_hinhanh = $hinhanh['content'];
+            $img = $this->hinhanh_model->where(array('id_hinhanh' => $id_hinhanh))->as_array()->get();
+            $hinhanh['img'] = $img;
+        }
+         $this->data['muc_hinhanh'] = $muc_hinhanh;
+        /*
+         * Muc 1
+         */
+
+        $tieu_de = $this->option_model->where(array('name' => "muc1_header"))->as_array()->get();
+        $noi_dung = $this->option_model->where(array('name' => "muc1_content"))->as_array()->get();
+        if (!empty($tieu_de))
+            $this->data['tieu_de_muc1'] = $tieu_de['content'];
+        if (!empty($noi_dung))
+            $this->data['noi_dung_muc1'] = $noi_dung['content'];
+        /*
+         * Muc 2
+         */
+
+        $tieu_de = $this->option_model->where(array('name' => "muc2_header"))->as_array()->get();
+        $noi_dung = $this->option_model->where(array('name' => "muc2_content"))->as_array()->get();
+        if (!empty($tieu_de))
+            $this->data['tieu_de_muc2'] = $tieu_de['content'];
+        if (!empty($noi_dung))
+            $this->data['noi_dung_muc2'] = $noi_dung['content'];
+
         echo $this->blade->view()->make('page/page', $this->data)->render();
     }
 
