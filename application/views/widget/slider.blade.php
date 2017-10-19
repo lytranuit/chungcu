@@ -5,7 +5,7 @@
         <img src="{{base_url()}}public/images/logo.png" alt=""style="width: 150px;" class="onlyone" data-style='bounceInLeft'>
         <br>
         <span class="hotline onlyone" data-style="fadeIn" style="animation-delay: 1s;">
-            0886 240 868/ 0968.251.192
+            0886 240 868/ 0938 727 846
         </span>
     </a>
     <!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->

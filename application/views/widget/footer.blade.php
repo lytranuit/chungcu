@@ -1,10 +1,10 @@
 <section class="slide story mbr-footer mbr-section mbr-section-md-padding" data-slide='7' id="contacts5-n" style="background-color: rgb(47, 47, 47); padding-top: 90px; padding-bottom: 90px;text-align: left;">
     <div class="row">
         <div class="mbr-footer-content col-xs-12 col-sm-12 col-md-6 col-lg-4">
-            <strong>Liên hệ</strong>
-            <br><label>Email:</label> <i style="margin-left: 5px;">dat.celadoncity@gmail.com</i>
-            <br><label>Phone:</label> <i style="margin-left: 5px;">0886 240 868 / 0968.251.192</i>
-            <br><label>Địa chỉ:</label> <i style="margin-left: 5px;">151 Bờ bao Tân thắng,Phường Sơn kỳ,Quận Tân Phú,TP HCM</i>
+            <strong>{{$tieu_de_muc1 or ""}}</strong>
+            <div class="fr-view">
+                <?php echo isset($noi_dung_muc1) ? $noi_dung_muc1 : "" ?>
+            </div>
         </div>
         <div class="mbr-footer-content col-xs-12 col-sm-6 col-md-6 col-lg-4" data-form-type="formoid">
             <strong class="font-semibold">Fanpage</strong>

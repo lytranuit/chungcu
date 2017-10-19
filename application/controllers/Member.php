@@ -581,6 +581,78 @@ class Member extends MY_Controller {
         }
     }
 
+    function editmuc1footer() {
+        if (isset($_POST['muc1Footer'])) {
+            $this->load->model("option_model");
+            $post_title = $_POST['post_titles'];
+            $post_content = $_POST['post_contents'];
+            $tieu_de = $this->option_model->where(array('name' => "muc1f_header"))->as_array()->get();
+            $noi_dung = $this->option_model->where(array('name' => "muc1f_content"))->as_array()->get();
+            if (!empty($tieu_de)) {
+                $id = $tieu_de['id_option'];
+                $this->option_model->update(array("content" => $post_title), $id);
+            } else {
+                $this->option_model->insert(array("name" => "muc1f_header", "content" => $post_title));
+            }
+            if (!empty($noi_dung)) {
+                $id = $noi_dung['id_option'];
+                $this->option_model->update(array("content" => $post_content), $id);
+            } else {
+                $this->option_model->insert(array("name" => "muc1f_content", "content" => $post_content));
+            }
+            redirect('member/editmuc1footer', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
+        } else {
+            $this->load->model("option_model");
+            $tieu_de = $this->option_model->where(array('name' => "muc1f_header"))->as_array()->get();
+            $noi_dung = $this->option_model->where(array('name' => "muc1f_content"))->as_array()->get();
+            if (!empty($tieu_de))
+                $this->data['tieu_de'] = $tieu_de['content'];
+            if (!empty($noi_dung))
+                $this->data['noi_dung'] = $noi_dung['content'];
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_editor.min.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_style.min.css");
+            /////////// Plugin
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/code_view.min.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/char_counter.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/code_view.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/colors.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/emoticons.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/file.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/fullscreen.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/image.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/image_manager.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/line_breaker.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/quick_insert.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/table.css");
+
+            array_push($this->data['javascript_tag'], base_url() . "public/js/autoNumeric.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
+            ///////// Editor
+            array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
+            /////////// Plugin
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/code_view.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/align.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/char_counter.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/colors.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/emoticons.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/entities.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/font_size.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/fullscreen.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/image.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/image_manager.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/link.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/lists.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/paragraph_format.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/paragraph_style.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/quick_insert.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/save.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/url.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/video.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/languages/en_gb.js");
+            echo $this->blade->view()->make('page/page', $this->data)->render();
+        }
+    }
+
     /*
      * TIN
      */

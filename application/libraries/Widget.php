@@ -178,10 +178,23 @@ class Widget {
     function header() {
 //        echo "tran";die();
 //        echo APPPATH;die();
+
         echo $this->blade->view()->make('widget/header', $this->data)->render();
     }
 
     function footer() {
+
+        $this->CI->load->model("option_model");
+        /*
+         * Muc 1
+         */
+
+        $tieu_de = $this->CI->option_model->where(array('name' => "muc1f_header"))->as_array()->get();
+        $noi_dung = $this->CI->option_model->where(array('name' => "muc1f_content"))->as_array()->get();
+        if (!empty($tieu_de))
+            $this->data['tieu_de_muc1'] = $tieu_de['content'];
+        if (!empty($noi_dung))
+            $this->data['noi_dung_muc1'] = $noi_dung['content'];
         echo $this->blade->view()->make('widget/footer', $this->data)->render();
     }
 

@@ -43,6 +43,11 @@
                     Trang chủ (Mục 2) </a>
             </li>
             <li>
+                <a href="{{get_url_seo("member/editmuc1footer")}}">
+<!--                    <i class="icon icon-envelope"></i>-->
+                    Footer (Mục 1) </a>
+            </li>
+            <li>
                 <a href="{{get_url_seo("member/quanlypage")}}">
                     <!--<i class="glyphicon glyphicon-flag"></i>-->
                     Page</a>

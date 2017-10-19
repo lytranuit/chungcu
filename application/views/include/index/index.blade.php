@@ -194,7 +194,7 @@ echo $widget->sliderhome();
             <div class="hr">&nbsp;</div>
         </div><!-- /row -->
         <div class="row subtitle-row fr-view" style="font-size:18px;text-align: left;">
-            <?= $noi_dung_muc1 ?>
+            <?php echo isset($noi_dung_muc1) ? $noi_dung_muc1 : "" ?>
         </div><!-- /row -->
     </div>
 </div>
@@ -209,7 +209,7 @@ echo $widget->sliderhome();
             <div class="hr">&nbsp;</div>
         </div><!-- /row -->
         <div class="row subtitle-row fr-view" style="font-size:18px;text-align: left;">
-            <?= $noi_dung_muc1 ?>
+            <?php echo isset($noi_dung_muc2) ? $noi_dung_muc2 : "" ?>
         </div><!-- /row -->
     </div>
 </div><!-- /slide6-->
@@ -299,33 +299,30 @@ echo $widget->sliderhome();
             }
         });
         var images = $('#slide-3 a');
-        images.hover(
-                function (e) {
-                    var asta = $(this).find('img');
-                    $('#slide-3 img').not(asta).stop(false, false).animate(
-                            {
-                                opacity: .5
-                            },
-                            'fast',
-                            'linear'
-                            );
-                    var zoom = $('<div class="zoom"></div>');
-                    if ($(this).hasClass('video')) {
-                        zoom.addClass('video');
-                    }
-                    $(this).prepend(zoom);
-                },
-                function (e) {
-                    $('#slide-3 img').stop(false, false).animate(
-                            {
-                                opacity: 1
-                            },
-                            'fast',
-                            'linear'
-                            );
-                    $('.zoom').remove();
-                }
-        );
+        images.hover(function (e) {
+            var asta = $(this).find('img');
+            $('#slide-3 img').not(asta).stop(false, false).animate(
+                    {
+                        opacity: .5
+                    },
+                    'fast',
+                    'linear'
+                    );
+            var zoom = $('<div class="zoom"></div>');
+            if ($(this).hasClass('video')) {
+                zoom.addClass('video');
+            }
+            $(this).prepend(zoom);
+        }, function (e) {
+            $('#slide-3 img').stop(false, false).animate(
+                    {
+                        opacity: 1
+                    },
+                    'fast',
+                    'linear'
+                    );
+            $('.zoom').remove();
+        });
         /******************
          * = Arrows click  *
          ******************/
@@ -404,6 +401,11 @@ echo $widget->sliderhome();
             var append = '<div style="height: 140px;"><div class="bounce123"><i class="fa fa-angle-double-down"></i></div></div>';
             var $this = $(this);
             $(append).insertAfter($this);
+
+            /*
+             * FADE IN IMAGE SHOW MORE
+             */
+            $("img", $(this)).addClass("onlyone img-responsive").attr("data-style", "fadeIn");
         });
         /*
          * Chan debugger
