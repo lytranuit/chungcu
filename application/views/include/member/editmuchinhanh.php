@@ -19,7 +19,7 @@
         uploadUrl: '<?php echo base_url() . "member/uploadhinhanh"; ?>', // you must set a valid URL here else you will get an error
         allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif'],
         maxFileSize: 10000,
-        maxFileCount: 10,
+        maxFileCount: 30,
         validateInitialCount: true,
         overwriteInitial: false,
 <?php if ($html != ""): ?>

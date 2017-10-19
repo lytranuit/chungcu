@@ -355,9 +355,9 @@ if (! function_exists('class_uses_recursive')) {
      */
     function class_uses_recursive($class)
     {
-        $results = [];
+        $results = array();
 
-        foreach (array_merge([$class => $class], class_parents($class)) as $class) {
+        foreach (array_merge(array($class => $class), class_parents($class)) as $class) {
             $results += trait_uses_recursive($class);
         }
 
@@ -452,7 +452,7 @@ if (! function_exists('data_set')) {
 
         if (($segment = array_shift($segments)) === '*') {
             if (! Arr::accessible($target)) {
-                $target = [];
+                $target = array();
             }
 
             if ($segments) {
@@ -467,7 +467,7 @@ if (! function_exists('data_set')) {
         } elseif (Arr::accessible($target)) {
             if ($segments) {
                 if (! Arr::exists($target, $segment)) {
-                    $target[$segment] = [];
+                    $target[$segment] = array();
                 }
 
                 data_set($target[$segment], $segments, $value, $overwrite);
@@ -477,7 +477,7 @@ if (! function_exists('data_set')) {
         } elseif (is_object($target)) {
             if ($segments) {
                 if (! isset($target->{$segment})) {
-                    $target->{$segment} = [];
+                    $target->{$segment} = array();
                 }
 
                 data_set($target->{$segment}, $segments, $value, $overwrite);
@@ -485,7 +485,7 @@ if (! function_exists('data_set')) {
                 $target->{$segment} = $value;
             }
         } else {
-            $target = [];
+            $target = array();
 
             if ($segments) {
                 data_set($target[$segment], $segments, $value, $overwrite);
