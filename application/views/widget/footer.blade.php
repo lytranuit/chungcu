@@ -8,7 +8,7 @@
         </div>
         <div class="mbr-footer-content col-xs-12 col-sm-6 col-md-6 col-lg-4" data-form-type="formoid">
             <strong class="font-semibold">Fanpage</strong>
-            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fceladoncityhcm%2F&tabs&width=340&height=214&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="214" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+            <div class="fb-page" data-href="https://www.facebook.com/chungcucaocapceladon/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/chungcucaocapceladon/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/chungcucaocapceladon/">Chung cư Cao Cấp CeladonCity</a></blockquote></div>
         </div>
         <div class="mbr-footer-content col-xs-12 col-sm-12 col-md-12 col-lg-4">
             <strong class="font-semibold">Đăng kí xem nhà mẫu</strong>
@@ -82,3 +82,13 @@
         });
     });
 </script>
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id))
+            return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.10&appId=1377843695771445';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
