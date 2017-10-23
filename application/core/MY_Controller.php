@@ -13,7 +13,7 @@ class MY_Controller extends CI_Controller {
         $this->load->model("page_model");
         //////
         $this->data['widget'] = $this->widget;
-        /////
+        $this->data['project_name'] = $this->config->item("project_name");
 ////////////////////////////////
         $views = APPPATH . "views/";
         $cache = APPPATH . "cache/";

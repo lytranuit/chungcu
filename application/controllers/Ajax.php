@@ -243,7 +243,7 @@ class Ajax extends MY_Controller {
              */
             $this->email->clear();
             $this->email->from($this->config->item('admin_email', 'ion_auth'), $this->config->item('site_title', 'ion_auth'));
-            $this->email->to("dat.celadoncity@gmail.com ");
+            $this->email->to(config_item("email_dk"));
             $this->email->subject($this->config->item('site_title', 'ion_auth') . ' - Tin nhắn');
             $html = "<p><strong>Tên:</strong>$name</p>"
                     . "<p><strong>Email:</strong>$email</p>"

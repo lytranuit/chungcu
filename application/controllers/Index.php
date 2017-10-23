@@ -11,19 +11,18 @@ class Index extends MY_Controller {
         $this->data['stylesheet_tag'] = array(
             base_url() . "public/css/bootstrap.min.css",
             base_url() . "public/css/font-awesome.min.css",
-            "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css",
+            base_url() . "public/font-awesome/css/font-awesome.min.css",
             base_url() . "public/fancybox/jquery.fancybox-v=2.1.5.css",
             base_url() . "public/css/style.css",
             base_url() . "public/engine1/style.css",
             base_url() . "public/css/timeline.css",
-            "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css",
+            base_url() . "public/css/animate.min.css",
             "https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&amp;subset=vietnamese",
             "https://fonts.googleapis.com/css?family=Roboto:400,700"
         );
         $this->data['javascript_tag'] = array(
             base_url() . "public/assets/web/assets/jquery/jquery.min.js",
-            base_url() . "public/assets/tether/tether.min.js",
-            base_url() . "public/assets/bootstrap/js/bootstrap.min.js",
+            base_url() . "public/js/bootstrap.min.js",
             base_url() . "public/js/jquery.easing.1.3.js",
             base_url() . "public/fancybox/jquery.fancybox.pack-v=2.1.5.js",
             base_url() . "public/js/moment.js",
@@ -93,7 +92,7 @@ class Index extends MY_Controller {
             $img = $this->hinhanh_model->where(array('id_hinhanh' => $id_hinhanh))->as_array()->get();
             $hinhanh['img'] = $img;
         }
-         $this->data['muc_hinhanh'] = $muc_hinhanh;
+        $this->data['muc_hinhanh'] = $muc_hinhanh;
         /*
          * Muc 1
          */

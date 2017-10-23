@@ -518,7 +518,6 @@ $config['proxy_ips'] = '';
 //$query = $db->where(array("name" => 'base_url'))->get('options');
 //$result = $query->result_array();
 //$base_url = count($result) ? $result[0]['content'] : "";
-$config['base_url'] = "http://localhost/chungcu/";
 /*
   |--------------------------------------------------------------------------
   | Modules locations
@@ -531,3 +530,12 @@ $config['base_url'] = "http://localhost/chungcu/";
  */
 
 $config['modules_locations'] = array(APPPATH . 'modules/');
+
+
+$config['base_url'] = "http://celadoncityreal.com/";
+
+$config['hotline'] = "0938 727 846";
+
+$config['project_name'] = "Celadon City";
+
+$config['email_dk'] = "tqviet209@gmail.com";

@@ -2,10 +2,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>public/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>public/images/local/favicon.ico">
 <title>
     @section("title") 
-    Celadon City
+    {{$project_name}}
     @show
 </title>
 

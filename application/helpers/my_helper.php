@@ -2,6 +2,15 @@
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
+if (!function_exists('config_item')) {
+
+    function config_item($str) {
+        $CI = &get_instance();
+        $item = $CI->config->item($str);
+        return $item;
+    }
+
+}
 if (!function_exists('sluggable')) {
 
     function sluggable($str) {

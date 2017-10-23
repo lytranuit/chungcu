@@ -1,8 +1,5 @@
-<link rel="stylesheet" href="{{base_url()}}public/assets/bootstrap-material-design-font/css/material.css">
-<link rel="stylesheet" href="{{base_url()}}public/assets/tether/tether.min.css">
 <link rel="stylesheet" href="{{base_url()}}public/assets/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{base_url()}}public/assets/dropdown/css/style.css">
-<link rel="stylesheet" href="{{base_url()}}public/assets/animate.css/animate.min.css">
 <link rel="stylesheet" href="{{base_url()}}public/assets/theme/css/style.css">
 <link rel="stylesheet" href="{{base_url()}}public/assets/mobirise/css/mbr-additional.css" type="text/css">
 <section id="ext_menu-e">
@@ -14,7 +11,7 @@
                 <div class="mbr-table-cell">
 
                     <div class="navbar-brand">
-                        <a href="{{base_url()}}" class="navbar-logo"><img src="{{base_url()}}public/assets/images/logo-146x128.png" alt="Mobirise"></a>
+                        <a href="{{base_url()}}" class="navbar-logo"><img src="{{base_url()}}public/images/local/logo-146x128.png" alt="Mobirise"></a>
                         <!--<a class="navbar-caption text-white" href="{{base_url()}}">CELADONCITY<br></a>-->
                     </div>
 
@@ -35,7 +32,8 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link link dropdown-toggle" href="{{get_url_page(11)}}" data-toggle="dropdown-submenu" aria-expanded="false"><span class="icon icon-building"></span> KHU CĂN HỘ</a>
                             <div class="dropdown-menu">
-                                <div class="dropdown"><a class="dropdown-item dropdown-toggle" href="{{get_url_page(6)}}" data-toggle="dropdown-submenu">Ruby Rencinct</a>
+                                <div class="dropdown">
+                                    <a class="dropdown-item dropdown-toggle" href="{{get_url_page(6)}}" data-toggle="dropdown-submenu">Ruby Rencinct</a>
                                     <div class="dropdown-menu dropdown-submenu">
                                         <a class="dropdown-item" href="{{get_url_page(12)}}">Block A</a>
                                         <a class="dropdown-item" href="{{get_url_page(13)}}">Block B</a>
@@ -80,9 +78,7 @@
 </section>
 
 <script src="{{base_url()}}public/js/jquery.validate.js"></script>
-<script src="{{base_url()}}public/assets/smooth-scroll/smooth-scroll.js"></script>
 <script src="{{base_url()}}public/assets/dropdown/js/script.min.js"></script>
 <script src="{{base_url()}}public/assets/touch-swipe/jquery.touch-swipe.min.js"></script>
-<script src="{{base_url()}}public/assets/viewport-checker/jquery.viewportchecker.js"></script>
 <script src="{{base_url()}}public/assets/theme/js/script.js"></script>
 <script src="{{base_url()}}public/js/script-header.js"></script>
