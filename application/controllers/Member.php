@@ -922,6 +922,11 @@ class Member extends MY_Controller {
 
     public function quanlymenu() {
         $this->load->model("pageweb_model");
+        $this->load->model("menu_model");
+        $all_menu = $this->menu_model->where("deleted", 0)->as_array()->get_all();
+        $data = recursive_menu_data($all_menu, 0);
+        array_unshift($data, array('id' => 0, 'id_page' => 0, 'text' => "Trang chủ", 'expanded' => false, 'enabled' => false));
+        $this->data['data'] = $data;
         $this->data['page'] = $this->pageweb_model->where("deleted", 0)->as_array()->get_all();
         array_push($this->data['stylesheet_tag'], base_url() . "public/css/kendo.default.min.css");
         array_push($this->data['stylesheet_tag'], base_url() . "public/css/kendo.common.min.css");

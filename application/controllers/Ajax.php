@@ -254,5 +254,17 @@ class Ajax extends MY_Controller {
         }
     }
 
-////////////
+    function updatemenu() {
+        $this->load->model("menu_model");
+        $array = json_decode($_POST["data"], true);
+        $this->menu_model->delete(array('deleted' => 0));
+
+        recursive_insert_menu_data($array, 0);
+        $result = 1;
+        $msg = 'Success.';
+        $return = array('status' => $result, 'msg' => $msg);
+        echo json_encode($return);
+    }
+
+    ////////////
 }

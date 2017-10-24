@@ -85,3 +85,71 @@ if (!function_exists('strtofloat')) {
     }
 
 }
+if (!function_exists('recursive_menu_data')) {
+
+    function recursive_menu_data($array, $parent) {
+        $menu = array_filter($array, function($item) use($parent) {
+            return $item['id_parent'] == $parent;
+        });
+        $return = array();
+        foreach ($menu as $key => $row) {
+            $tmp = array('id' => $row['id'], 'id_page' => $row['id_page'], 'text' => $row['text'], 'expanded' => 'true');
+            $tmp['items'] = recursive_menu_data($array, $row['id']);
+            array_push($return, $tmp);
+        }
+        return $return;
+    }
+
+}
+if (!function_exists('recursive_insert_menu_data')) {
+
+    function recursive_insert_menu_data($array, $parent) {
+        $CI = &get_instance();
+        $CI->load->model("menu_model");
+
+        foreach ($array as $key => $row) {
+            if ($parent == 0 && $key == 0)
+                continue;
+
+            $data = array(
+                'id_page' => $row['id_page'],
+                'order' => $key,
+                'id_parent' => $parent,
+                'text' => $row['text'],
+            );
+            $id = $CI->menu_model->insert($data);
+            if ($id > 0) {
+                $child = $row['child'];
+                recursive_insert_menu_data($child, $id);
+            }
+        }
+    }
+
+}
+//if (!function_exists('recursive_menu_html')) {
+//
+//    function recursive_menu_html($array, $parent) {
+//        $html = array();
+//        foreach ($menu as $key => $row) {
+//            $id = $row['id'];
+//            $child = array_filter($array, function($item) use($id) {
+//                return $item['id_parent'] == $id;
+//            });
+//            if ($parent == 0) {
+//                if (count($child)) {
+//                    $item = ""
+//                    array_push($html,$item)
+//                } else {
+//                    $item = '<li class="nav-item">
+//                            <a class="nav-link link" href="' . get_url_page($row['id_page']) . '">' . $row['text'] . '</a>
+//                        </li>';
+//                }
+//            }
+//            $tmp = array('id' => $row['id'], 'id_page' => $row['id_page'], 'text' => $row['text'], 'expanded' => 'true');
+//            $tmp['items'] = recursive_menu_data($array, $row['id']);
+//            array_push($return, $tmp);
+//        }
+//        return $return;
+//    }
+//
+//}

@@ -532,7 +532,7 @@ $config['proxy_ips'] = '';
 $config['modules_locations'] = array(APPPATH . 'modules/');
 
 
-$config['base_url'] = "http://celadoncityreal.com/";
+$config['base_url'] = "http://localhost/chungcu/";
 
 $config['hotline'] = "0938 727 846";
 
