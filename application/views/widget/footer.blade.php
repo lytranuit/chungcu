@@ -83,7 +83,8 @@
     });
 </script>
 <div id="fb-root"></div>
-<script>(function (d, s, id) {
+<script>
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id))
             return;
@@ -91,4 +92,5 @@
         js.id = id;
         js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.10&appId=1377843695771445';
         fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    }(document, 'script', 'facebook-jssdk'));
+</script>

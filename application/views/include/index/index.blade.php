@@ -16,7 +16,7 @@ echo $widget->sliderhome();
 <div class="slide story" id="slide-2" data-slide="2">
     <div class="container">
         <div class="row title-row">
-            <div class="col-12 font-thin onlyone font-semibold" data-style='bounceIn'>Celadon City</div>
+            <div class="col-12 font-thin onlyone font-semibold text-center" data-style='bounceIn'>Celadon City</div>
         </div><!-- /row -->
         <div class="row line-row">
             <div class="hr">&nbsp;</div>
@@ -67,7 +67,7 @@ echo $widget->sliderhome();
 <div class="slide story" id="slide-4" data-slide="4">
     <div class="container">
         <div class="row title-row">
-            <div class="col-12 font-semibold">NHỮNG LÝ DO CHỌN SỐNG TẠI CĂN HỘ CELADON CITY</div>
+            <div class="col-12 font-semibold text-center">NHỮNG LÝ DO CHỌN SỐNG TẠI CĂN HỘ CELADON CITY</div>
         </div><!-- /row -->
         <div class="row line-row">
             <div class="hr">&nbsp;</div>
@@ -188,13 +188,15 @@ echo $widget->sliderhome();
 <div class="slide story show_more" id="slide-5" data-slide ='5'>
     <div class="container">
         <div class="row title-row">
-            <div class="col-12 font-semibold">{{$tieu_de_muc1 or ""}}</div>
+            <div class="col-12 font-semibold text-center">{{$tieu_de_muc1 or ""}}</div>
         </div><!-- /row -->
         <div class="row line-row">
             <div class="hr">&nbsp;</div>
         </div><!-- /row -->
-        <div class="row subtitle-row fr-view" style="font-size:18px;text-align: left;">
-            <?php echo isset($noi_dung_muc1) ? $noi_dung_muc1 : "" ?>
+        <div class="row subtitle-row">
+            <div class="col-md-12 fr-view">
+                <?php echo isset($noi_dung_muc1) ? $noi_dung_muc1 : "" ?>
+            </div>
         </div><!-- /row -->
     </div>
 </div>
@@ -203,13 +205,15 @@ echo $widget->sliderhome();
 <div class="slide story show_more" id="slide-6" data-slide="6">
     <div class="container">
         <div class="row title-row">
-            <div class="col-12 font-semibold">{{$tieu_de_muc2 or ""}}</div>
+            <div class="col-12 font-semibold text-center">{{$tieu_de_muc2 or ""}}</div>
         </div><!-- /row -->
         <div class="row line-row">
             <div class="hr">&nbsp;</div>
         </div><!-- /row -->
-        <div class="row subtitle-row fr-view" style="font-size:18px;text-align: left;">
-            <?php echo isset($noi_dung_muc2) ? $noi_dung_muc2 : "" ?>
+        <div class="row subtitle-row"> 
+            <div class="col-md-12 fr-view">
+                <?php echo isset($noi_dung_muc2) ? $noi_dung_muc2 : "" ?>
+            </div>
         </div><!-- /row -->
     </div>
 </div><!-- /slide6-->

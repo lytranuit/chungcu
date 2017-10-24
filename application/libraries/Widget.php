@@ -218,9 +218,9 @@ class Widget {
             $img_banner = $this->CI->hinhanh_model->where(array('id_hinhanh' => $id_img_banner))->as_array()->get();
             if (!empty($img_banner)) {
                 $this->data['img_banner'] = $img_banner;
+                echo $this->blade->view()->make('widget/banner', $this->data)->render();
             }
         }
-        echo $this->blade->view()->make('widget/banner', $this->data)->render();
     }
 
 }
