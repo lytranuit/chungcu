@@ -80,6 +80,7 @@ class Index extends MY_Controller {
         }
         $this->data['arr_slider'] = $arr_slider;
 
+        array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_style.min.css");
         array_push($this->data['stylesheet_tag'], base_url() . "public/css/flexslider.css");
         array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.flexslider.js");
 
