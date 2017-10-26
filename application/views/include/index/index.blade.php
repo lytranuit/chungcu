@@ -1,5 +1,6 @@
 
 <?php
+echo $widget->lienhe();
 echo $widget->banner();
 echo $widget->chat();
 echo $widget->header();

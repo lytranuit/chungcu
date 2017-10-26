@@ -223,6 +223,10 @@ class Widget {
         }
     }
 
+    function lienhe() {
+        echo $this->blade->view()->make('widget/lienhe', $this->data)->render();
+    }
+
     function tienich() {
         $this->CI->load->model("tienich_model");
         $this->CI->load->model("hinhanh_model");
