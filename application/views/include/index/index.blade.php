@@ -16,41 +16,18 @@ echo $widget->sliderhome();
 <div class="slide story" id="slide-2" data-slide="2">
     <div class="container">
         <div class="row title-row">
-            <div class="col-12 font-thin onlyone font-semibold text-center" data-style='bounceIn'>Celadon City</div>
+            <div class="col-12 font-semibold text-center">{{$tieu_de_muc0 or ""}}</div>
         </div><!-- /row -->
         <div class="row line-row">
             <div class="hr">&nbsp;</div>
         </div><!-- /row -->
-        <div class="row subtitle-row" style="text-align: left;font-size: 18px;">
-            <div class="col-sm-6 font-thin onlyone" data-style='bounceInLeft'>
-                <h3 style="color:greenyellow;    font-weight: bold;">Vị trí</h3>
-                <p style="font-size: 13px;">Celadon City nằm tại Trung Tâm Phường Sơn Kỳ, Quận Tân Phú với vị trí thuận tiện, cạnh Aeon Mall Tân Phú, gần quốc lộ 1A nên dễ dàng di chuyển đến các tỉnh
-                    miền Tây, miền Đông. Đặc biệt kế hoạch mở rộng đường Tân Kỳ Tân Quý ( đoạn từ Lê Trọng Tấn đến Trường Chinh) đã được phê duyệt và sớm đi vào hoạt động,
-                    tạo điều kiện kết nối giao thông từ Celadon City đến trung tâm ngày một dễ dàng hơn.</p>
+        <div class="row subtitle-row">
+            <div class="col-md-12 fr-view">
+                <?php echo isset($noi_dung_muc0) ? $noi_dung_muc0 : "" ?>
             </div>
-
-            <div class="col-sm-6 onlyone" data-style='bounceInRight'>
-                <div class="col-sm-6 hover1">
-                    <img src="{{base_url()}}public/images/22.jpg" style="border-radius: 15px;"/>
-                </div>
-                <div class="col-sm-6">
-                    <h3 style="color:greenyellow;    font-weight: bold;">Mô tả</h3>
-                    <p style="font-size: 13px;"><img src="{{base_url()}}public/images/dientich.png"><b>Tổng diện tích: </b><i>82.5ha</i></p>
-                    <p style="font-size: 13px;"><img src="{{base_url()}}public/images/cay.png"><b>Khuôn viên cây xanh:</b> <i>16.4ha</i></p>
-                    <p style="font-size: 13px;"><img src="{{base_url()}}public/images/xay.png"><b>Mật độ xây dựng:</b> <i>20%</i></p>
-                    <!--                <div class="col-sm-6" style="font-size: 13px;">
-                                        <div class="col-sm-12" style="list-style: circle;display:list-item;"><i>Cách Trung tâm Thành phố 7km</i></div>
-                                        <div class="col-sm-12" style="list-style: circle;display:list-item;"><i> Cách nhà ga TC3 - Sân bay Tân Sơn Nhất chỉ 3km</i></div>
-                                        <div class="col-sm-12" style="list-style: circle;display:list-item;"><i>Chỉ 10 phút đến trung tâm khi tuyến Metro số 2 Tham Lương - Bến Thành đi vào hoạt động</i></div>
-                                    </div>-->
-                </div>
-            </div>
-            <p style="clear: both;">&nbsp;</p>
-            <div class="col-sm-12 text-center onlyone" data-style="fadeIn"><img class="img-responsive"src="{{base_url()}}public/images/map.gif" /></div>
-            <!--<div class="col-sm-12 text-center"><button class="btn btn-success animated bounce infinite">Xem thêm</button> </div>-->
         </div><!-- /row -->
+    </div>
 
-    </div><!-- /container -->
 </div><!-- /slide2 -->
 
 <!-- === SLide 3 - Portfolio -->
@@ -217,64 +194,7 @@ echo $widget->sliderhome();
         </div><!-- /row -->
     </div>
 </div><!-- /slide6-->
-<div class="container" style="margin-bottom: 60px;">
-    <div class="row content-row">
-        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown'>
-            <a href="{{get_url_page(10)}}">
-                <div class="featured-img hover1">
-                    <img class="img-responsive" src="{{base_url()}}/public/images/trung-tam-the-duc-the-thao-sport-resort.jpg" alt="Trung tam the duc the thao   Celadon City">
-                </div> 
-                <p style="    background: rgba(255, 0, 0, 0.55);">Trung Tâm Thể Thao Sport &amp; Resort</p> 
-            </a>
-        </div>
-        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.2s;">
-            <a href="{{get_url_page(8)}}">
-                <p style="background: green;">Trung Tâm Thương Mại Aeon</p> 
-                <div class="featured-img hover1">
-                    <img class="img-responsive" src="{{base_url()}}/public/images/aeon-tan-phu.jpg" alt="Aeon tan phu">
-                </div> 
-            </a>
-        </div>
-        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.4s;">
-            <a href="{{get_url_page(17)}}">
-                <div class="featured-img hover1">
-                    <img class="img-responsive" src="{{base_url()}}/public/images/trung-tam-van-hoa-celadon-city.jpg" alt="Trung tam van hoa celadon city">
-                </div> 
-                <p style="background: rgb(48, 103, 96);">Trung Tâm Văn Hóa</p> 
-            </a>
-        </div>
-
-    </div>
-    <div class="row content-row">
-        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.6s;">
-            <a href="{{get_url_page(9)}}">
-                <div class="featured-img hover1">
-                    <img class="img-responsive" src="{{base_url()}}/public/images/truonghoc.jpg" alt="Trường học">
-                </div>
-                <p style="background: rgb(18, 18, 76);">
-                    Trường học
-                </p> 
-            </a>
-        </div>
-        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 0.8s;">
-            <a href="{{get_url_page(18)}}">
-                <p style="background: brown;">Công Viên Nội Khu</p> 
-                <div class="featured-img hover1">
-                    <img class="img-responsive" src="{{base_url()}}/public/images/32.jpg" alt="Cong vien noi khu">
-                </div> 
-            </a>
-        </div>
-        <div class="col-sm-4 col-xs-12 work-space onlyone" data-style='fadeInDown' style="animation-delay: 1s;">
-            <a href="{{get_url_page(19)}}">
-                <div class="featured-img hover1">
-                    <img class="img-responsive" src="{{base_url()}}/public/images/xe-dien-noi-khu-celadon-city.jpg" alt="Xe dien noi khu celadon city">
-                </div> 
-                <p style="background: #b260ef;">Xe Điện Nội Khu
-                </p> 
-            </a>
-        </div>
-    </div>
-</div>
+<?php echo $widget->tienich(); ?>
 <?php echo $widget->footer(); ?>
 
 <script>

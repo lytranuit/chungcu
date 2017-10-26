@@ -35,7 +35,6 @@
     }).on("filebatchselected", function (event, files) {
         $(this).fileinput("upload");
     });
-    ;
     $("#hinh-anh-banner").on('fileuploaded', function (event, data, previewId, index) {
         var id = data.response.key;
         var add = "<input type='hidden' name='id_hinhanh' value='" + id + "' class='hinhanh'>";

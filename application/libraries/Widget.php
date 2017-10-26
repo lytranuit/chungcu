@@ -223,4 +223,17 @@ class Widget {
         }
     }
 
+    function tienich() {
+        $this->CI->load->model("tienich_model");
+        $this->CI->load->model("hinhanh_model");
+
+        $tienich = $this->CI->tienich_model->where(array('deleted' => 0))->as_array()->get_all();
+        foreach ($tienich as &$row) {
+            $hinhanh = $this->CI->hinhanh_model->where(array('id_hinhanh' => $row['id_hinhanh'], 'deleted' => 0))->as_array()->get();
+            $row['hinhanh'] = $hinhanh;
+        }
+        $this->data['tienich'] = $tienich;
+        echo $this->blade->view()->make('widget/tienich', $this->data)->render();
+    }
+
 }

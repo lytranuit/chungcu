@@ -78,7 +78,9 @@
 </section>
 
 <script src="{{base_url()}}public/js/jquery.validate.js"></script>
+<script src="{{base_url()}}public/assets/smooth-scroll/smooth-scroll.js"></script>
 <script src="{{base_url()}}public/assets/dropdown/js/script.min.js"></script>
 <script src="{{base_url()}}public/assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+<script src="{{base_url()}}public/assets/viewport-checker/jquery.viewportchecker.js"></script>
 <script src="{{base_url()}}public/assets/theme/js/script.js"></script>
 <script src="{{base_url()}}public/js/script-header.js"></script>

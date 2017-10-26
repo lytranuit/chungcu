@@ -1,36 +1,20 @@
 <div class="col-md-12" style="margin:20px 0px;">
-    <button class="btn btn-success themslider" href=""><span></span>Thêm slider</button>
+    <button class="btn btn-success themslider" href=""><span></span>Thêm tiện ích</button>
 </div>
 <form  method="POST" action="" id="form-slider" style="margin: 20px 0px;">
     @foreach($arr_slider as $slider)
     <div class="col-md-12 alert box-{{$slider['id']}}">
         <a href="#" class="close delete-slider" data-id="{{$slider['id']}}" data-dismiss="alert" aria-label="close" title="close">×</a>
-        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="margin: 8px 0px 20px;">Slider</div>
-            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1"><input class="form-control" name="order[]" required="" value="{{$slider['order']}}" style="min-height: 0px;padding: 5px;"/></div>
+        <div class="form-group col-md-12 parent">
+            <label for="text1">
+                Tiêu đề:
+            </label><span class="text-danger">*</span><span class="error-place"></span>
+            <input name="text1[]" value="{{$slider['tieu_de']}}" class="form-control"/>
         </div>
         <div class="col-md-12">
             <div class="form-group">
                 <input id="hinh-anh{{$slider['id']}}" name="hinhanh[]" type="file" multiple class="file">
             </div>
-        </div>
-        <div class="form-group col-md-4 parent">
-            <label for="text1">
-                Text1:
-            </label><span class="error-place"></span>
-            <textarea name="text1[]" value="" class="form-control edit">{{$slider['animate_1']}}</textarea>
-        </div>
-        <div class="form-group col-md-4 parent">
-            <label for="text2">
-                Text2:
-            </label><span class="text-danger">*</span><span class="error-place"></span>
-            <textarea name="text2[]" value="" class="form-control edit">{{$slider['animate_2']}}</textarea>
-        </div>
-        <div class="form-group col-md-4 parent">
-            <label for="text3">
-                Text3:
-            </label><span class="text-danger">*</span><span class="error-place"></span>
-            <textarea name="text3[]" value="" class="form-control edit">{{$slider['animate_3']}}</textarea>
         </div>
         <input type="hidden" name="id[]" value="{{$slider['id']}}"/>
         <input type='hidden' name='id_hinhanh[]' value='{{$slider['id_hinhanh']}}' class='hinhanh'>
@@ -76,7 +60,7 @@
         $(".themslider").click(function () {
             $.ajax({
                 type: 'GET',
-                url: '{{base_url()}}ajax/loadslider',
+                url: '{{base_url()}}ajax/loadtienich',
                 success: function (data) {
                     $("#form-slider").prepend(data);
                 },

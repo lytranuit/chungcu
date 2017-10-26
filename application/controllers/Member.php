@@ -173,7 +173,68 @@ class Member extends MY_Controller {
                 $htmlcon = "{
                         caption: '" . $hinh[0]['ten_hinhanh'] . "',
                         width: '120px',
-                        url: '" . base_url() . "member/deleteImage/1',
+                        url: '" . base_url() . "member/deleteImage/" . $hinh[0]['id_hinhanh'] . "',
+                        key: " . $hinh[0]['id_hinhanh'] . "
+                    },";
+                $slider['hinhhtml'] = $html;
+                $slider['hinhconf'] = $htmlcon;
+            }
+            $this->data['arr_slider'] = $arr_slider;
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/fileinput.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_editor.min.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_style.min.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/colors.css");
+
+            array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/colors.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
+            echo $this->blade->view()->make('page/page', $this->data)->render();
+        }
+    }
+
+    public function edittienich() {
+        if (isset($_POST['slider'])) {
+            $this->load->model("tienich_model");
+            $this->load->model("hinhanh_model");
+            $arr_id = $this->input->post('id');
+            $arr_idhinhanh = $this->input->post('id_hinhanh');
+            $arr_text1 = $this->input->post('text1');
+            $arr_deleted = $this->input->post('id_deleted');
+            foreach ($arr_id as $key => $id) {
+                if (is_numeric($id)) { /////// update
+                    $additional_data = array(
+                        'id_hinhanh' => $arr_idhinhanh[$key],
+                        'tieu_de' => $arr_text1[$key]
+                    );
+                    $this->tienich_model->update($additional_data, $id);
+                    $this->hinhanh_model->update(array('deleted' => 0), $arr_idhinhanh[$key]);
+                } else { ////// insert
+                    $additional_data = array(
+                        'id_hinhanh' => $arr_idhinhanh[$key],
+                        'tieu_de' => $arr_text1[$key]
+                    );
+                    $this->tienich_model->insert($additional_data);
+                    $this->hinhanh_model->update(array('deleted' => 0), $arr_idhinhanh[$key]);
+                }
+            }
+            if (count($arr_deleted)) {
+                foreach ($arr_deleted as $id) {
+                    $this->tienich_model->update(array("deleted" => 1), $id);
+                }
+            }
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
+        } else {
+            $this->load->model("tienich_model");
+            $this->load->model("hinhanh_model");
+            $arr_slider = $this->tienich_model->where(array('deleted' => 0))->as_array()->get_all();
+            foreach ($arr_slider as &$slider) {
+                $hinh = $this->hinhanh_model->where(array('id_hinhanh' => $slider['id_hinhanh']))->as_array()->get_all();
+                $html = "\"<img src='" . base_url() . $hinh[0]['thumb_src'] . "' class='file-preview-image' alt='" . $hinh[0]['ten_hinhanh'] . "' title='" . $hinh[0]['ten_hinhanh'] . "'>\",";
+                $htmlcon = "{
+                        caption: '" . $hinh[0]['ten_hinhanh'] . "',
+                        width: '120px',
+                        url: '" . base_url() . "member/deleteImage/" . $hinh[0]['id_hinhanh'] . "',
                         key: " . $hinh[0]['id_hinhanh'] . "
                     },";
                 $slider['hinhhtml'] = $html;
@@ -414,6 +475,78 @@ class Member extends MY_Controller {
             /////////// Plugin
             array_push($this->data['javascript_tag'], "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js");
             array_push($this->data['javascript_tag'], "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/code_view.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/align.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/char_counter.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/colors.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/emoticons.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/entities.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/font_size.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/fullscreen.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/image.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/image_manager.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/link.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/lists.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/paragraph_format.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/paragraph_style.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/quick_insert.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/save.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/url.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/video.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/languages/en_gb.js");
+            echo $this->blade->view()->make('page/page', $this->data)->render();
+        }
+    }
+
+    function edittongquan() {
+        if (isset($_POST['muc1'])) {
+            $this->load->model("option_model");
+            $post_title = $_POST['post_titles'];
+            $post_content = $_POST['post_contents'];
+            $tieu_de = $this->option_model->where(array('name' => "muc0_header"))->as_array()->get();
+            $noi_dung = $this->option_model->where(array('name' => "muc0_content"))->as_array()->get();
+            if (!empty($tieu_de)) {
+                $id = $tieu_de['id_option'];
+                $this->option_model->update(array("content" => $post_title), $id);
+            } else {
+                $this->option_model->insert(array("name" => "muc0_header", "content" => $post_title));
+            }
+            if (!empty($noi_dung)) {
+                $id = $noi_dung['id_option'];
+                $this->option_model->update(array("content" => $post_content), $id);
+            } else {
+                $this->option_model->insert(array("name" => "muc0_content", "content" => $post_content));
+            }
+            redirect('member/edittongquan', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
+        } else {
+            $this->load->model("option_model");
+            $tieu_de = $this->option_model->where(array('name' => "muc0_header"))->as_array()->get();
+            $noi_dung = $this->option_model->where(array('name' => "muc0_content"))->as_array()->get();
+            if (!empty($tieu_de))
+                $this->data['tieu_de'] = $tieu_de['content'];
+            if (!empty($noi_dung))
+                $this->data['noi_dung'] = $noi_dung['content'];
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_editor.min.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_style.min.css");
+            /////////// Plugin
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/code_view.min.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/char_counter.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/code_view.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/colors.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/emoticons.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/file.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/fullscreen.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/image.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/image_manager.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/line_breaker.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/quick_insert.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/table.css");
+
+            array_push($this->data['javascript_tag'], base_url() . "public/js/autoNumeric.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
+            ///////// Editor
+            array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
+            /////////// Plugin
             array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/code_view.min.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/align.min.js");
             array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/char_counter.min.js");
@@ -1108,7 +1241,7 @@ class Member extends MY_Controller {
                     $htmlcon = "{
                         caption: '" . $img_banner['ten_hinhanh'] . "',
                         width: '120px',
-                        url: '" . base_url() . "member/deleteImage/1',
+                        url: '" . base_url() . "member/deleteImage/" . $img_banner['id_hinhanh'] . "',
                         key: " . $img_banner['id_hinhanh'] . "
                     },";
                     $img_banner['hinhhtml'] = $html;
@@ -1133,7 +1266,7 @@ class Member extends MY_Controller {
             $this->load->model("option_model");
             $this->load->model("hinhanh_model");
             $arr_hinhanh = $this->input->post('id_hinhanh');
-
+            $arr_hinhanh = $arr_hinhanh ? $arr_hinhanh : array();
             $muc_hinhanh = $this->option_model->where('name', "muc_hinhanh")->as_array()->get_all();
             /*
              * DELETE
@@ -1169,7 +1302,7 @@ class Member extends MY_Controller {
                     $htmlcon .= "{
                         caption: '" . $img['ten_hinhanh'] . "',
                         width: '120px',
-                        url: '" . base_url() . "member/deleteImage/1',
+                        url: '" . base_url() . "member/deleteImage/" . $img['id_hinhanh'] . "',
                         key: " . $img['id_hinhanh'] . "
                     },";
                     $htmlinput .= "<input type='hidden' name='id_hinhanh[]' value='" . $img['id_hinhanh'] . "' class='hinhanh'>";
@@ -1578,15 +1711,27 @@ class Member extends MY_Controller {
     }
 
     public function deleteImage($params) {//gets the job done but you might want to add error checking and security
-//        $this->load->model('hinhanh_model');
-//        $id = $params[0];
-//        $file = $this->hinhanh_model->where('id_hinhanh', $id)->get(1);
-//        $success = 0;
-//        if (file_exists($file['src'])) {
-//            $success = unlink($file['src']);
-//            $data = array('deleted' => 1);
-//            $this->hinhanh_model->update($data, $id);
-//        }
+        $this->load->model('hinhanh_model');
+        $id = $params[0];
+        $file = $this->hinhanh_model->where('id_hinhanh', $id)->as_array()->get();
+        $success = 0;
+        if (file_exists($file['src'])) {
+            $success = unlink($file['src']);
+        }
+        if (file_exists($file['real_hinhanh'])) {
+            $success = unlink($file['real_hinhanh']);
+        }
+        if (file_exists($file['thumb_src'])) {
+            $success = unlink($file['thumb_src']);
+        }
+        if (file_exists($file['bg_src'])) {
+            $success = unlink($file['bg_src']);
+        }
+        if (file_exists($file['slider_src'])) {
+            $success = unlink($file['slider_src']);
+        }
+        $data = array('deleted' => 1);
+        $this->hinhanh_model->update($data, $id);
 //        $info = new StdClass;
 //        $info->sucess = $success;
 //        if (IS_AJAX) {

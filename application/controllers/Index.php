@@ -82,7 +82,16 @@ class Index extends MY_Controller {
         array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_style.min.css");
         array_push($this->data['stylesheet_tag'], base_url() . "public/css/flexslider.css");
         array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.flexslider.js");
+        /*
+         * Tông quan
+         */
 
+        $tieu_de = $this->option_model->where(array('name' => "muc0_header"))->as_array()->get();
+        $noi_dung = $this->option_model->where(array('name' => "muc0_content"))->as_array()->get();
+        if (!empty($tieu_de))
+            $this->data['tieu_de_muc0'] = $tieu_de['content'];
+        if (!empty($noi_dung))
+            $this->data['noi_dung_muc0'] = $noi_dung['content'];
         /*
          * Hình ảnh
          */
