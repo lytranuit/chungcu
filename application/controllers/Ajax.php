@@ -16,6 +16,11 @@ class Ajax extends MY_Controller {
         echo $this->blade->view()->make('ajax/ajaxtienich', $this->data)->render();
     }
 
+    function loadlydo() {
+        $this->data['id'] = "new" . rand();
+        echo $this->blade->view()->make('ajax/ajaxlydo', $this->data)->render();
+    }
+
     function editpage() {
         $id = $this->input->get('id');
         $link = $this->input->get('link');

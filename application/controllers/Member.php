@@ -192,6 +192,68 @@ class Member extends MY_Controller {
         }
     }
 
+    public function editlydo() {
+        $id_user = $this->session->userdata('user_id');
+        if (isset($_POST['slider'])) {
+            $this->load->model("lydo_model");
+            $this->load->model("hinhanh_model");
+            $arr_id = $this->input->post('id');
+            $arr_idhinhanh = $this->input->post('id_hinhanh');
+            $arr_text1 = $this->input->post('text1');
+            $arr_text2 = $this->input->post('text2');
+            $arr_order = $this->input->post('order');
+            $arr_deleted = $this->input->post('id_deleted');
+            foreach ($arr_id as $key => $id) {
+                if (is_numeric($id)) { /////// update
+                    $additional_data = array(
+                        'id_hinhanh' => $arr_idhinhanh[$key],
+                        'tieu_de' => $arr_text1[$key],
+                        'noi_dung' => $arr_text2[$key],
+                        'order' => $arr_order[$key]
+                    );
+                    $this->lydo_model->update($additional_data, $id);
+                    $this->hinhanh_model->update(array('deleted' => 0), $arr_idhinhanh[$key]);
+                } else { ////// insert
+                    $additional_data = array(
+                        'id_hinhanh' => $arr_idhinhanh[$key],
+                        'tieu_de' => $arr_text1[$key],
+                        'noi_dung' => $arr_text2[$key],
+                        'order' => $arr_order[$key]
+                    );
+                    $this->lydo_model->insert($additional_data);
+                    $this->hinhanh_model->update(array('deleted' => 0), $arr_idhinhanh[$key]);
+                }
+            }
+            if (count($arr_deleted)) {
+                foreach ($arr_deleted as $id) {
+                    $this->lydo_model->update(array("deleted" => 1), $id);
+                }
+            }
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
+        } else {
+            $this->load->model("lydo_model");
+            $this->load->model("hinhanh_model");
+            $arr_slider = $this->lydo_model->where(array('deleted' => 0))->order_by("order")->as_array()->get_all();
+            foreach ($arr_slider as &$slider) {
+                $hinh = $this->hinhanh_model->where(array('id_hinhanh' => $slider['id_hinhanh']))->as_array()->get_all();
+                $html = "\"<img src='" . base_url() . $hinh[0]['thumb_src'] . "' class='file-preview-image' alt='" . $hinh[0]['ten_hinhanh'] . "' title='" . $hinh[0]['ten_hinhanh'] . "'>\",";
+                $htmlcon = "{
+                        caption: '" . $hinh[0]['ten_hinhanh'] . "',
+                        width: '120px',
+                        url: '" . base_url() . "member/deleteImage/" . $hinh[0]['id_hinhanh'] . "',
+                        key: " . $hinh[0]['id_hinhanh'] . "
+                    },";
+                $slider['hinhhtml'] = $html;
+                $slider['hinhconf'] = $htmlcon;
+            }
+            $this->data['arr_slider'] = $arr_slider;
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/fileinput.css");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
+            echo $this->blade->view()->make('page/page', $this->data)->render();
+        }
+    }
+
     public function edittienich() {
         if (isset($_POST['slider'])) {
             $this->load->model("tienich_model");
@@ -740,6 +802,67 @@ class Member extends MY_Controller {
             $noi_dung = $this->option_model->where(array('name' => "muc1f_content"))->as_array()->get();
             if (!empty($tieu_de))
                 $this->data['tieu_de'] = $tieu_de['content'];
+            if (!empty($noi_dung))
+                $this->data['noi_dung'] = $noi_dung['content'];
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_editor.min.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_style.min.css");
+            /////////// Plugin
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/code_view.min.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/char_counter.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/code_view.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/colors.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/emoticons.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/file.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/fullscreen.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/image.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/image_manager.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/line_breaker.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/quick_insert.css");
+            array_push($this->data['stylesheet_tag'], base_url() . "public/css/plugins/table.css");
+
+            array_push($this->data['javascript_tag'], base_url() . "public/js/autoNumeric.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/fileinput.js");
+            ///////// Editor
+            array_push($this->data['javascript_tag'], base_url() . "public/js/froala_editor.min.js");
+            /////////// Plugin
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/code_view.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/align.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/char_counter.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/colors.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/emoticons.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/entities.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/font_size.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/fullscreen.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/image.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/image_manager.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/link.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/lists.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/paragraph_format.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/paragraph_style.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/quick_insert.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/save.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/url.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/plugins/video.min.js");
+            array_push($this->data['javascript_tag'], base_url() . "public/js/languages/en_gb.js");
+            echo $this->blade->view()->make('page/page', $this->data)->render();
+        }
+    }
+
+    function editkhuyenmai() {
+        if (isset($_POST['muc1'])) {
+            $this->load->model("option_model");
+            $post_content = $_POST['post_contents'];
+            $noi_dung = $this->option_model->where(array('name' => "muckhuyenmai_content"))->as_array()->get();
+            if (!empty($noi_dung)) {
+                $id = $noi_dung['id_option'];
+                $this->option_model->update(array("content" => $post_content), $id);
+            } else {
+                $this->option_model->insert(array("name" => "muckhuyenmai_content", "content" => $post_content));
+            }
+            redirect('member/editkhuyenmai', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
+        } else {
+            $this->load->model("option_model");
+            $noi_dung = $this->option_model->where(array('name' => "muckhuyenmai_content"))->as_array()->get();
             if (!empty($noi_dung))
                 $this->data['noi_dung'] = $noi_dung['content'];
             array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_editor.min.css");

@@ -66,8 +66,14 @@ class Index extends MY_Controller {
 //        die();
 
         $this->load->model("slider_model");
+        $this->load->model("lydo_model");
         $this->load->model("hinhanh_model");
         $this->load->model("option_model");
+
+
+        array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_style.min.css");
+        array_push($this->data['stylesheet_tag'], base_url() . "public/css/flexslider.css");
+        array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.flexslider.js");
 
         /*
          * SLIDER
@@ -79,9 +85,6 @@ class Index extends MY_Controller {
         }
         $this->data['arr_slider'] = $arr_slider;
 
-        array_push($this->data['stylesheet_tag'], base_url() . "public/css/froala_style.min.css");
-        array_push($this->data['stylesheet_tag'], base_url() . "public/css/flexslider.css");
-        array_push($this->data['javascript_tag'], base_url() . "public/js/jquery.flexslider.js");
         /*
          * Tông quan
          */
@@ -102,6 +105,15 @@ class Index extends MY_Controller {
             $hinhanh['img'] = $img;
         }
         $this->data['muc_hinhanh'] = $muc_hinhanh;
+        /*
+         * Lý do
+         */
+        $arr_lydo = $this->lydo_model->where(array('deleted' => 0))->order_by('order')->as_array()->get_all();
+        foreach ($arr_lydo as &$lydo) {
+            $hinh = $this->hinhanh_model->where(array('id_hinhanh' => $lydo['id_hinhanh']))->as_array()->get();
+            $lydo['hinhanh'] = $hinh['bg_src'];
+        }
+        $this->data['arr_lydo'] = $arr_lydo;
         /*
          * Muc 1
          */

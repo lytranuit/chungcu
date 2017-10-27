@@ -240,4 +240,17 @@ class Widget {
         echo $this->blade->view()->make('widget/tienich', $this->data)->render();
     }
 
+    function khuyenmai() {
+
+        $this->CI->load->model("option_model");
+        /*
+         * Muc 1
+         */
+        $noi_dung = $this->CI->option_model->where(array('name' => "muckhuyenmai_content"))->as_array()->get();
+        if (!empty($noi_dung)) {
+            $this->data['noi_dung'] = $noi_dung['content'];
+            echo $this->blade->view()->make('widget/khuyenmai', $this->data)->render();
+        }
+    }
+
 }

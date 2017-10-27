@@ -28,6 +28,11 @@
             </li>
             @if($is_admin)
             <li>
+                <a href="{{get_url_seo("member/editkhuyenmai")}}">
+<!--                    <i class="icon icon-envelope"></i>-->
+                    Trang chủ (Khuyến mãi) </a>
+            </li>
+            <li>
                 <a href="{{get_url_seo("member/edittongquan")}}">
 <!--                    <i class="icon icon-envelope"></i>-->
                     Trang chủ (Tổng quan) </a>
@@ -36,6 +41,11 @@
                 <a href="{{get_url_seo("member/editmuchinhanh")}}">
 <!--                    <i class="icon icon-envelope"></i>-->
                     Trang chủ (Hình ảnh) </a>
+            </li>
+            <li>
+                <a href="{{get_url_seo("member/editlydo")}}">
+<!--                    <i class="icon icon-envelope"></i>-->
+                    Trang chủ (Lý do) </a>
             </li>
             <li>
                 <a href="{{get_url_seo("member/editmuc1")}}">

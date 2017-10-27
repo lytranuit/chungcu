@@ -5,6 +5,7 @@ echo $widget->banner();
 echo $widget->chat();
 echo $widget->header();
 echo $widget->sliderhome();
+echo $widget->khuyenmai();
 ?>
 <!-- === Arrows === -->
 <div id="arrows">
@@ -13,6 +14,7 @@ echo $widget->sliderhome();
     <div id="arrow-left" class="disabled visible-lg"></div>
     <div id="arrow-right" class="disabled visible-lg"></div>
 </div><!-- /.arrows -->
+
 <!-- === Slide 2 === -->
 <div class="slide story" id="slide-2" data-slide="2">
     <div class="container">
@@ -37,7 +39,6 @@ echo $widget->sliderhome();
         @foreach($muc_hinhanh as $hinhanh)
         <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox hover1" href="{{base_url() . $hinhanh['img']['src']}}"><img class="thumb" src="{{base_url() . $hinhanh['img']['src']}}" alt="{{$hinhanh['img']['real_hinhanh']}}"></a></div>
         @endforeach
-
     </div>
 </div><!-- /slide3 -->
 
@@ -51,114 +52,51 @@ echo $widget->sliderhome();
             <div class="hr">&nbsp;</div>
         </div><!-- /row -->
         <ul class="timeline">
+            @foreach($arr_lydo as $key => $row)
+            @if($key % 2 == 0)
             <li class="onlyone"data-style='bounceInLeft'>
                 <div class="timeline-image hover1">
-                    <img src="{{base_url()}}public/images/24.jpg" alt="">
+                    <img src="{{base_url() . $row['hinhanh']}}" alt="">
                 </div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h4 class="subheading">
-                            Celadon City - Khu rừng nhiệt đới rộng 16ha với 3 hồ sinh thái - Một Đà Lạt thơ mộng tại TPHCM</h4>
+                        <h3 class="subheading">
+                            {{$row['tieu_de'] or ""}}
+                        </h3>
                     </div>
                     <div class="timeline-body">
                         <p class="text-muted">
-                            Khu công viên nội có diện tích rộng 16.4 ha và 3 hồ sinh thái, là một trong 3 công viên có quy mô lớn nhất TPHCM bên cạnh Công viên Tao Đàn (20ha)  &  Công viên Đầm Sen (19ha). Điều đặc biệt là khu công viên này nằm trọn trong khu dân cư Celadon City, là một tiện ích độc đáo và duy nhất, mà chưa khu dân cư nào khác tại TPHCM có được. Mật độ xây dựng toàn khu chỉ 20%.
+                            {{$row['noi_dung'] or ""}}
                         </p>
                     </div>
                 </div>
+                @if(isset($arr_lydo[$key + 1]))
                 <div class="line"></div>
+                @endif
             </li>
+            @else
             <li class="timeline-inverted onlyone"data-style='bounceInRight'>
                 <div class="timeline-image hover1">
-                    <img class="" src="{{base_url()}}public/images/map.gif" alt="">
+                    <img src="{{base_url() . $row['hinhanh']}}" alt="">
                 </div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h4 class="subheading">
-                            Celadon City - giao thông thuận tiện tới mọi điểm đến</h4>
+                        <h3 class="subheading">
+                            {{$row['tieu_de'] or ""}}
+                        </h3>
                     </div>
                     <div class="timeline-body">
                         <p class="text-muted">
-                            Celadon City chỉ cách trung tâm thành phố 7 km và cách sân bay Tân Sơn Nhất 3 km. Vị trí rất thuận tiện, kết nối với đại lộ Đông Tây và quốc lộ 1A.
-                        </p>
-                        <p class="text-muted">
-                            Địa chỉ: Đường Bờ Bao Tân Thắng, Phường Sơn Kỳ, Quận Tân Phú, TP.HCM. Khi tuyến tàu điện ngầm số 2 Tham Lương - Chợ Bến Thành hoàn tất, từ Celadon City, bạn chỉ mất 10 phút để đến trung tâm quận 1. 
+                            {{$row['noi_dung'] or ""}}
                         </p>
                     </div>
                 </div>
+                @if(isset($arr_lydo[$key + 1]))
                 <div class="line"></div>
+                @endif
             </li>
-            <li class="onlyone" data-style='bounceInLeft'>
-                <div class="timeline-image hover1">
-                    <img class="img-circle img-responsive" src="{{base_url()}}public/images/logo.png" alt="">
-                </div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h4 class="subheading">
-                            Celadon City - Chủ Đầu Tư Uy Tín
-                        </h4>
-                    </div>
-                    <div class="timeline-body">
-                        <p class="text-muted">
-                            Celadon City là thành quả của sự hợp tác chiến lược giữa hai tập đoàn bất động sản uy tín: Gamuda (Malaysia) & Sacomreal (Việt Nam). 
-                        </p>
-                    </div>
-                </div>
-                <div class="line"></div>
-            </li>
-            <li class="timeline-inverted onlyone"data-style='bounceInRight'>
-                <div class="timeline-image hover1">
-                    <img class="img-circle img-responsive" src="{{base_url()}}public/images/35.jpg" alt="">
-                </div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h4 class="subheading">
-                            Chất lượng xây dựng tốt - Celadon City đạt tiêu chuẩn của hệ thống CONQUAS 
-                        </h4>
-                    </div>
-                    <div class="timeline-body">
-                        <p class="text-muted">
-                            Hệ thống đánh giá chất lượng công trình được xây dựng và phát triển bởi Cục Quản Lý Công Trình và Xây Dựng Singapore.
-                        </p>
-                    </div>
-                </div>
-                <div class="line"></div>
-            </li>
-            <li class="onlyone"data-style='bounceInLeft'>
-                <div class="timeline-image hover1">
-                    <img class="img-circle img-responsive" src="{{base_url()}}public/images/4.jpg" alt="">
-                </div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h4 class="subheading">
-                            Celadon City Cuộc sống tiện nghi - đầy đủ tiện ích
-                        </h4>
-                    </div>
-                    <div class="timeline-body">
-                        <p class="text-muted">
-                            Trung tâm thương mại & giải trí AEON (Nhật Bản) - 3.51 ha - đã khai trương ngày 11/1/2014 - tập trung các thương hiệu thời trang, mỹ phẩm, nhà hàng nổi tiếng, xuất xứ từ Nhật Bản. Trường dạy ngoại ngữ ILA, dạy toán KUMON. Rạp chiếu phim CGV - Megastar. Khu vui chơi dành cho trẻ em: Tini Town...
-                        </p>
-                    </div>
-                </div>
-                <div class="line"></div>
-            </li>
-            <li class="timeline-inverted onlyone"data-style='bounceInRight'>
-                <div class="timeline-image hover1">
-                    <img class="img-circle img-responsive" src="{{base_url()}}public/images/25.jpg" alt="">
-                </div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h4 class="subheading">
-                            Thiết kế đẹp, hiện đại.  Diện tích căn hộ phù hợp                   
-                        </h4>
-                    </div>
-                    <div class="timeline-body">
-                        <p class="text-muted">
-                            Cẩn trọng đến từng chi tiết thiết kế, từ cảnh quan đến tiện ích hạ tầng, tối đa hóa sự tiện nghi cho cư dân và mang phong cách hiện đại đến từng căn hộ. 
-                        </p>
-                    </div>
-                </div>
-            </li>
+            @endif
+            @endforeach
         </ul>
     </div><!-- /row -->
 </div><!-- /container -->
