@@ -126,30 +126,57 @@ if (!function_exists('recursive_insert_menu_data')) {
     }
 
 }
-//if (!function_exists('recursive_menu_html')) {
-//
-//    function recursive_menu_html($array, $parent) {
-//        $html = array();
-//        foreach ($menu as $key => $row) {
-//            $id = $row['id'];
-//            $child = array_filter($array, function($item) use($id) {
-//                return $item['id_parent'] == $id;
-//            });
-//            if ($parent == 0) {
-//                if (count($child)) {
-//                    $item = ""
-//                    array_push($html,$item)
-//                } else {
-//                    $item = '<li class="nav-item">
-//                            <a class="nav-link link" href="' . get_url_page($row['id_page']) . '">' . $row['text'] . '</a>
-//                        </li>';
-//                }
-//            }
-//            $tmp = array('id' => $row['id'], 'id_page' => $row['id_page'], 'text' => $row['text'], 'expanded' => 'true');
-//            $tmp['items'] = recursive_menu_data($array, $row['id']);
-//            array_push($return, $tmp);
-//        }
-//        return $return;
-//    }
-//
-//}
+if (!function_exists('recursive_menu_html')) {
+
+    function recursive_menu_html($array, $parent) {
+        $html = "";
+        $menu = array_filter($array, function($item) use($parent) {
+            return $item['id_parent'] == $parent;
+        });
+
+        foreach ($menu as $key => $row) {
+            $id = $row['id'];
+            $child = array_filter($array, function($item) use($id) {
+                return $item['id_parent'] == $id;
+            });
+            $tag = $drop_menu = $end_drop_menu = $end_tag = "";
+            if ($parent == 0) {
+                if (count($child)) {
+                    $tag = '<li class="nav-item dropdown">';
+                    $end_tag = '</li>';
+                    $drop_menu = '<div class="dropdown-menu">';
+                    $end_drop_menu = '</div>';
+                    $item = '<a class="nav-link link dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="false" href="' . get_url_page($row['id_page']) . '">' . $row['text'] . '</a>';
+
+                    $child = recursive_menu_html($array, $id);
+
+                    $html .= $tag . $item . $drop_menu . $child . $end_drop_menu . $end_tag;
+                } else {
+                    $tag = '<li class="nav-item">';
+                    $end_tag = '</li>';
+                    $item = '<a class="nav-link link" href="' . get_url_page($row['id_page']) . '">' . $row['text'] . '</a>';
+
+                    $html .= $tag . $item . $end_tag;
+                }
+            } else {
+                if (count($child)) {
+                    $tag = '<div class="dropdown">';
+                    $end_tag = '</div>';
+                    $drop_menu = '<div class="dropdown-menu dropdown-submenu">';
+                    $end_drop_menu = '</div>';
+                    $item = '<a class="dropdown-item dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="false" href="' . get_url_page($row['id_page']) . '">' . $row['text'] . '</a>';
+
+                    $child = recursive_menu_html($array, $id);
+
+                    $html .= $tag . $item . $drop_menu . $child . $end_drop_menu . $end_tag;
+                } else {
+                    $item = '<a class="dropdown-item" href="' . get_url_page($row['id_page']) . '">' . $row['text'] . '</a>';
+
+                    $html .= $tag . $item . $end_tag;
+                }
+            }
+        }
+        return $html;
+    }
+
+}

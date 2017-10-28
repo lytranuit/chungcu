@@ -180,8 +180,11 @@ class Widget {
 //        echo APPPATH;die();
         $this->CI->load->model("menu_model");
         $all_menu = $this->CI->menu_model->where("deleted", 0)->order_by(array('id_parent' => "ASC", 'order' => "ASC"))->as_array()->get_all();
-        array_unshift($all_menu, array('id' => 0, 'id_page' => 0, 'text' => "Trang chủ", 'id_parent' => 0));
-        $this->data['menu'] = $all_menu;
+//        array_unshift($all_menu, array('id' => 0, 'id_page' => 0, 'text' => "Trang chủ", 'id_parent' => 0));
+        $this->data['menu'] = recursive_menu_html($all_menu, 0);
+//        echo "<pre>";
+//        print_r($this->data['menu']);
+//        die();
         echo $this->blade->view()->make('widget/header', $this->data)->render();
     }
 

@@ -264,11 +264,14 @@ echo $widget->khuyenmai();
             var append = '<div style="height: 140px;"><div class="bounce123"><i class="fa fa-angle-double-down"></i></div></div>';
             var $this = $(this);
             $(append).insertAfter($this);
-
+        });
+        $(".fr-view").each(function () {
             /*
              * FADE IN IMAGE SHOW MORE
              */
-            $("img", $(this)).addClass("onlyone img-responsive").attr("data-style", "fadeIn");
+            $("img", $(this)).addClass("onlyone img-responsive").attr("data-style", "fadeIn").wrap(function () {
+                return "<a href='" + $(this).attr("src") + "'></a>";
+            });
         });
         /*
          * Chan debugger
