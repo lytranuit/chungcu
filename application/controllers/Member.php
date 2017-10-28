@@ -195,14 +195,23 @@ class Member extends MY_Controller {
     public function editlydo() {
         $id_user = $this->session->userdata('user_id');
         if (isset($_POST['slider'])) {
+            $this->load->model("option_model");
             $this->load->model("lydo_model");
             $this->load->model("hinhanh_model");
             $arr_id = $this->input->post('id');
+            $post_title = $this->input->post('post_titles');
             $arr_idhinhanh = $this->input->post('id_hinhanh');
             $arr_text1 = $this->input->post('text1');
             $arr_text2 = $this->input->post('text2');
             $arr_order = $this->input->post('order');
             $arr_deleted = $this->input->post('id_deleted');
+            $tieu_de = $this->option_model->where(array('name' => "muclydo_header"))->as_array()->get();
+            if (!empty($tieu_de)) {
+                $id = $tieu_de['id_option'];
+                $this->option_model->update(array("content" => $post_title), $id);
+            } else {
+                $this->option_model->insert(array("name" => "muclydo_header", "content" => $post_title));
+            }
             foreach ($arr_id as $key => $id) {
                 if (is_numeric($id)) { /////// update
                     $additional_data = array(
@@ -232,8 +241,13 @@ class Member extends MY_Controller {
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit;
         } else {
+            $this->load->model("option_model");
             $this->load->model("lydo_model");
             $this->load->model("hinhanh_model");
+            $tieu_de = $this->option_model->where(array('name' => "muclydo_header"))->as_array()->get();
+            if (!empty($tieu_de))
+                $this->data['tieu_de'] = $tieu_de['content'];
+
             $arr_slider = $this->lydo_model->where(array('deleted' => 0))->order_by("order")->as_array()->get_all();
             foreach ($arr_slider as &$slider) {
                 $hinh = $this->hinhanh_model->where(array('id_hinhanh' => $slider['id_hinhanh']))->as_array()->get_all();

@@ -2,11 +2,17 @@
     <button class="btn btn-success themslider" href=""><span></span>Thêm Lý do</button>
 </div>
 <form  method="POST" action="" id="form-slider" style="margin: 20px 0px;">
+    <div class="form-group col-md-12 tieude parent">
+        <label for="post_titles">
+            Tiêu đề:
+        </label><span class="text-danger">*</span><span class="error-place"></span>
+        <input type="text" name="post_titles" class="form-control" placeholder="Tiêu đề" value="{{$tieu_de or ''}}" required=""/>
+    </div>
     @foreach($arr_slider as $slider)
     <div class="col-md-12 alert box-{{$slider['id']}}">
         <a href="#" class="close delete-slider" data-id="{{$slider['id']}}" data-dismiss="alert" aria-label="close" title="close">×</a>
         <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-          <div style="float: left;width: 50px;margin: 8px 0px 20px;">Lý do</div>
+            <div style="float: left;width: 50px;margin: 8px 0px 20px;">Lý do</div>
             <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" ><input class="form-control" name="order[]" required="" style="min-height: 0px;padding: 5px;" value="{{$slider['order']}}"/></div>
         </div>
         <div class="col-md-12">
@@ -69,7 +75,7 @@
                 type: 'GET',
                 url: '{{base_url()}}ajax/loadlydo',
                 success: function (data) {
-                    $("#form-slider").prepend(data);
+                    $("#form-slider .tieude").after(data);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                 }

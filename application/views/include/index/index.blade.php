@@ -46,7 +46,7 @@ echo $widget->khuyenmai();
 <div class="slide story" id="slide-4" data-slide="4">
     <div class="container">
         <div class="row title-row">
-            <div class="col-12 font-semibold text-center">NHỮNG LÝ DO CHỌN SỐNG TẠI CĂN HỘ CELADON CITY</div>
+            <div class="col-12 font-semibold text-center">{{$tieu_de_lydo or ""}}</div>
         </div><!-- /row -->
         <div class="row line-row">
             <div class="hr">&nbsp;</div>

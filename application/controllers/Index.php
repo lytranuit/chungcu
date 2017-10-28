@@ -108,6 +108,10 @@ class Index extends MY_Controller {
         /*
          * Lý do
          */
+        $tieu_de = $this->option_model->where(array('name' => "muclydo_header"))->as_array()->get();
+
+        $this->data['tieu_de_lydo'] = $tieu_de['content'];
+
         $arr_lydo = $this->lydo_model->where(array('deleted' => 0))->order_by('order')->as_array()->get_all();
         foreach ($arr_lydo as &$lydo) {
             $hinh = $this->hinhanh_model->where(array('id_hinhanh' => $lydo['id_hinhanh']))->as_array()->get();
