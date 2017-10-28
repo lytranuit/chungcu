@@ -7,9 +7,12 @@ h3{margin-top:0px;margin-bottom:10px;}
 html, body{height:100%;width:100%;}
 body{background-color:white;font-family:'Roboto', sans-serif;font-weight:normal;overflow-x:hidden;-webkit-font-smoothing:antialiased !important;}
 .justify-text{text-align:justify;}
-.navbar{background-color:rgba(37, 37, 37, 0.85);border-bottom:0 none;font-size:12px;transition:.25s all linear;}
+.navbar{background-color:#171717;border-bottom:0 none;font-size:12px;transition:.25s all linear;}
 .navbar.inv{background-color:rgba(0, 0, 0, .5);border-bottom:1px solid #bfbfbf;}
-.navbar .nav a{color: green;font-family: 'Lora', serif;font-weight: bold;font-size: 13px;}
+.navbar .nav a{font-weight: bold;color: #ffffff;font-family: 'Lora', serif;font-size: 13px;text-transform: uppercase;}
+.navbar a[aria-expanded="true"],.navbar a[aria-expanded="true"]:hover, .navbar .dropdown-menu {background: #0e0e0e;}
+.navbar-nav > li > a:hover,.navbar a:hover{color: #f1c050;}
+.navbar.navbar-white .nav a{color: green;}
 .navbar.inv a{color:#e4e6e5;}
 .navbar-responsive-collapse{margin:0 auto;width:80%;}
 .nav li{text-align:center;white-space:nowrap;}

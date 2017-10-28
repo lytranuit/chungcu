@@ -277,20 +277,32 @@
 .is-builder .nav-dropdown.collapsing {
     transition: none !important; }
 .navbar-short{
-     background: rgba(40, 40, 40, 0.46) !important;
+    background: rgba(40, 40, 40, 0.46) !important;
+}
+.navbar-close,.navbar-toggler{
+    color:white;
+}
+.close-icon::before,.close-icon::after{
+    background: white !important;
+}
+.collapse.in{
+    background:#171717;
 }
 .navbar-white,.navbar-white.navbar-short{
- background: white !important;
+    background: white !important;
     border-bottom: 1px solid #cdcbcb;
 }
-.navbar-white .navbar-dropdown .navbar-close{
-color:black;
+.navbar-white .navbar-dropdown .navbar-close,.navbar-white .navbar-toggler{
+    color:black;
 }
 .navbar-white .collapse.in{
-background:white;
-border:1px solid gainsboro;
+    background:white;
+    border:1px solid gainsboro;
 }
 .navbar-white .navbar-close .close-icon::before,.navbar-white .navbar-close .close-icon::after{
-background:black !important;
+    background:black !important;
 }
+
+.navbar.navbar-white a[aria-expanded="true"],.navbar.navbar-white a[aria-expanded="true"]:hover, .navbar.navbar-white .dropdown-menu {background: #ebebeb;}
+
 /*# sourceMappingURL=style.css.map */

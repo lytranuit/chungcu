@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{base_url()}}public/assets/mobirise/css/mbr-additional.css" type="text/css">
 <section id="ext_menu-e">
 
-    <nav class="navbar navbar-dropdown navbar-fixed-top">
+    <nav class="navbar navbar-dropdown navbar-fixed-top ">
         <div class="container">
 
             <div class="mbr-table">
