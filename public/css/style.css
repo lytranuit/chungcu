@@ -9,7 +9,7 @@ body{background-color:white;font-family:'Roboto', sans-serif;font-weight:normal;
 .justify-text{text-align:justify;}
 .navbar{background-color:#171717;border-bottom:0 none;font-size:12px;transition:.25s all linear;}
 .navbar.inv{background-color:rgba(0, 0, 0, .5);border-bottom:1px solid #bfbfbf;}
-.navbar .nav a{font-weight: bold;color: #ffffff;font-family: 'Lora', serif;font-size: 13px;text-transform: uppercase;}
+.navbar .nav a{font-weight: bold;color: #ffffff;font-family: 'Lora', serif;font-size: 11px;text-transform: uppercase;}
 .navbar a[aria-expanded="true"],.navbar a[aria-expanded="true"]:hover, .navbar .dropdown-menu {background: #0e0e0e;}
 .navbar-nav > li > a:hover,.navbar a:hover{color: #f1c050;}
 .navbar.navbar-white .nav a{color: green;}
@@ -38,7 +38,7 @@ section{padding:45px;background:white;}
                          .active-menu{display:none !important;}
                          .navbar-toggle{margin-right:10px;}
                          .navbar{padding:0;}
-                         .navbar .nav a{font-size:16px;padding-left:0;}
+                         .navbar .nav a{font-size:13px;padding-left:0;}
                          .icon{margin-right:12px;}
                          .nav li[data-slide="1"],
                          .nav li[data-slide="6"]{background-color:#2f2f2f;}
