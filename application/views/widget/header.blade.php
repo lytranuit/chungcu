@@ -3,8 +3,6 @@
 <link rel="stylesheet" href="{{base_url()}}public/assets/theme/css/style.css">
 <link rel="stylesheet" href="{{base_url()}}public/assets/mobirise/css/mbr-additional.css" type="text/css">
 <section id="ext_menu-e">
-
-
     <nav class="navbar navbar-dropdown navbar-fixed-top" style="width: 100%;margin: 0;">
         <div class="container">
             <div class="row">
