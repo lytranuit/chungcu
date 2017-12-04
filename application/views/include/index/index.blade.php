@@ -1,8 +1,8 @@
 
 <?php
-echo $widget->lienhe();
+//echo $widget->lienhe();
 echo $widget->banner();
-echo $widget->chat();
+echo $widget->contactpopup();
 echo $widget->header();
 echo $widget->sliderhome();
 echo $widget->khuyenmai();

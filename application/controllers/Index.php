@@ -563,4 +563,41 @@ class Index extends MY_Controller {
         }
     }
 
+    public function gethinh() {
+        include_once("public/dom/simple_html_dom.php");
+//        $html = file_get_contents("http://alonhadat.com.vn/dat-nen-phia-tay-tp-so-hong-rieng-bao-so-chi-3-7-tr-nen-giam-gia-den-7-5--1226562.html");
+//        echo $html;
+
+        $page = "http://celadoncityreal.com/";
+        $html = file_get_html($page);
+
+        //$img = $html->find(".content-item .thumbnail a img");
+        $first = $html->find("img");
+
+        foreach ($first as $link) {
+            $src = $link->src;
+            if (strpos($src, $page) !== FALSE) {
+                /*
+                 * Lay link internal (Xóa ten page ra khoi src)
+                 */
+                $des = FCPATH . "downloads/" . str_replace($page, "", $src);
+                $filename = basename($des);
+                $path = str_replace($filename, "", $des);
+//                echo $des . "<br>";
+//                echo $filename . "<br>";
+//                echo $path . "<br>";
+//                die();
+                /*
+                 * LUU FILE
+                 */
+                if (!file_exists($path)) {
+                    mkdir($path, 0777, true);
+                }
+                file_put_contents($des, file_get_contents($src));
+
+                print_r($link->src);
+            }
+        }
+    }
+
 }

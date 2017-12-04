@@ -212,6 +212,10 @@ class Widget {
         echo $this->blade->view()->make('widget/chat', $this->data)->render();
     }
 
+    function contactpopup() {
+        echo $this->blade->view()->make('widget/contactpopup', $this->data)->render();
+    }
+
     function banner() {
         $this->CI->load->model("option_model");
         $this->CI->load->model("hinhanh_model");
