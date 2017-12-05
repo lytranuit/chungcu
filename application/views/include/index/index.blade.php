@@ -1,6 +1,6 @@
 
 <?php
-//echo $widget->lienhe();
+echo $widget->contactpopup();
 echo $widget->banner();
 echo $widget->header();
 echo $widget->sliderhome();

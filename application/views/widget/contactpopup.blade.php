@@ -5,7 +5,7 @@
                 <div class="panel-heading top-bar">
                     <h3 class="panel-title"><span class="fa fa-comment"></span> Đăng kí xem nhà mẫu</h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" style="display:none;">
                     <form id="popuplienhe">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Họ và Tên</label>
