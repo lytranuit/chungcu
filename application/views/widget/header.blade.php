@@ -35,6 +35,9 @@
         </div>
     </nav>
 </section>
+<script>
+    var path = '{{base_url()}}';
+</script>
 <script src="{{base_url()}}public/js/jquery.validate.js"></script>
 <script src="{{base_url()}}public/assets/smooth-scroll/smooth-scroll.js"></script>
 <script src="{{base_url()}}public/assets/dropdown/js/script.min.js"></script>

@@ -10,4 +10,5 @@ $(document).ready(function () {
         box.removeClass("show_more");
         parent.remove();
     });
+    
 });

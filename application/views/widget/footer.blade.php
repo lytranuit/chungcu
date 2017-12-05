@@ -44,44 +44,6 @@
      ">
     <img class="img-responsive" src="{{base_url()}}public/images/hotline-bg.png"/>
 </div>
-<script>
-    $(document).ready(function () {
-//        $("#formlienhe .form-control").tooltip();
-        $.validator.setDefaults({
-            debug: true,
-            success: "valid"
-        });
-        $("#formlienhe").validate({
-            rules: {
-                email: {
-                    required: true,
-                    email: true
-                },
-                mobile: {
-                    number: true
-                }
-            },
-            errorPlacement: function (error, element) {
-                element.attr("title", error.text()).tooltip();
-            },
-            submitHandler: function (form) {
-                var data = $(form).serialize();
-                $.ajax({
-                    type: 'POST',
-                    data: data,
-                    url: '{{base_url()}}ajax/contactsubmit',
-                    success: function (data) {
-                        alert("Đăng kí thành công!");
-                        $(form).trigger("reset");
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                    }
-                });
-                return false;
-            }
-        });
-    });
-</script>
 <div id="fb-root"></div>
 <script>
     (function (d, s, id) {

@@ -225,6 +225,11 @@ class Ajax extends MY_Controller {
     }
 
     function contactsubmit() {
+
+        if (isset($_SESSION['timer_contact']) && $_SESSION['timer_contact'] > date("Y-m-d H:i:s")) {
+            echo json_encode(array('error' => "Yêu cầu đã được gữi! Xin chờ trong ít phút", 'timer' => $_SESSION['timer_contact']));
+            die();
+        }
         $this->load->model("contact_model");
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
@@ -238,6 +243,11 @@ class Ajax extends MY_Controller {
                 'message' => $message
             );
             $this->contact_model->insert($array);
+            /*
+             * SET LIMIT 
+             */
+            $_SESSION['timer_contact'] = date("Y-m-d H:i:s", strtotime("+1 minutes"));
+            echo json_encode(array('success' => 1));
             /*
              * Mail setting
              */
