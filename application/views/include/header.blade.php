@@ -1,5 +1,6 @@
 <?php
-//echo $widget->chat();
+
+echo $widget->contactpopup();
 echo $widget->header();
 echo $widget->background();
 ?>
